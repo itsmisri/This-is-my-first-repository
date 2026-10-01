@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Distraction Hook — process documentation by Misri Bhagat, M.A. Experience Design.">
+  <title>Distraction Hook — Misri Bhagat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <header class="site-nav">
+    <a class="wordmark" href="#top">DIS<span>TRACTION</span> HOOK</a>
+    <nav aria-label="Primary navigation">
+      <a href="#question">Question</a>
+      <a href="#making">Making</a>
+      <a href="#final">Final</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- 01 HERO -->
+    <section class="hero section-pad">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">STUDIO: BY ANY MEDIA NECESSARY / PROCESS DOCUMENTATION</p>
+        <h1>Distraction<br><em>Hook</em></h1>
+        <p class="hero-question">What happens in the small moment when a notification pulls our attention away?</p>
+        <div class="meta">
+          <span>7 WEEKS</span>
+          <span>MISRI BHAGAT</span>
+          <span>M.A. EXPERIENCE DESIGN — YEAR 2</span>
+        </div>
+      </div>
+      <figure class="hero-object reveal">
+        <img src="assets/p01_img1.png" alt="Views of the Distraction Hook phone stand with red and amber lights">
+        <figcaption>Final artefact / phone stand + electronics</figcaption>
+      </figure>
+    </section>
+
+    <!-- 02 QUESTION -->
+    <section id="question" class="dark-section">
+      <div class="section-pad narrow reveal">
+        <p class="section-number">01 / THE QUESTION</p>
+        <h2>I started by asking what happens when technology enters an existing system.</h2>
+        <div class="two-col">
+          <p>The studio began with the Luddite Movement, Critical Making and Protocol. I kept returning to how technology changes the systems and habits already around us.</p>
+          <p>I moved from larger systems to something much closer to everyday life: my relationship with my phone.</p>
+        </div>
+      </div>
+      <div class="quote-wrap reveal">
+        <p class="giant-quote">“I am doing something. The phone gives me a notification. I notice it. My attention moves towards the phone.”</p>
+      </div>
+      <div class="section-pad narrow reveal">
+        <div class="two-col">
+          <p>I was not trying to say that phones are bad or that people should stop using them. I wanted to understand the small everyday behaviour that happens when a notification pulls us away from what we were already doing.</p>
+          <p class="mono-note">LUDDITES → CRITICAL MAKING → PROTOCOL → NOTIFICATION → ATTENTION SHIFT</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 ATTENTION -->
+    <section class="attention section-pad" id="attention">
+      <div class="section-heading reveal">
+        <p class="section-number">02 / FROM TECHNOLOGY TO ATTENTION</p>
+        <h2>The idea became smaller.</h2>
+        <p>From changing systems to one tiny, familiar moment.</p>
+      </div>
+      <div class="attention-sequence reveal" aria-label="Notification and attention sequence">
+        <div class="attention-step"><b>01</b><span>WORK</span><small>already doing something</small></div>
+        <div class="signal-line"></div>
+        <div class="attention-step signal"><b>02</b><span>NOTIFICATION</span><small>small sound</small></div>
+        <div class="signal-line"></div>
+        <div class="attention-step"><b>03</b><span>NOTICE</span><small>attention shifts</small></div>
+        <div class="signal-line"></div>
+        <div class="attention-step"><b>04</b><span>PHONE</span><small>check it</small></div>
+      </div>
+    </section>
+
+    <!-- 04 INTERACTION -->
+    <section class="interactive dark-section section-pad" id="interaction">
+      <div class="interactive-intro reveal">
+        <p class="section-number">03 / TRY THE MOMENT</p>
+        <h2>Trigger a distraction.</h2>
+        <p>The physical artefact listens for a notification sound while the phone is on the stand. Here, the interaction is simplified for the web.</p>
+      </div>
+      <div class="hook-demo reveal" id="hookDemo">
+        <div class="demo-phone" aria-live="polite">
+          <div class="phone-speaker"></div>
+          <div class="phone-screen">
+            <span class="phone-time">10:42</span>
+            <span class="notification-dot"></span>
+            <div class="phone-notification" id="phoneNotification">
+              <strong>Notification</strong>
+              <span>New message received</span>
+            </div>
+          </div>
+        </div>
+        <div class="demo-stand">
+          <span class="demo-sensor" aria-hidden="true"></span>
+          <div class="demo-lights" aria-label="Artefact indicator lights">
+            <i></i><i></i><i></i><i></i>
+          </div>
+          <div class="demo-speaker" aria-hidden="true"></div>
+        </div>
+        <p class="demo-status" id="demoStatus">PHONE READY / WAITING</p>
+        <button class="trigger-btn" id="triggerBtn" type="button">Trigger notification</button>
+        <button class="reset-btn" id="resetBtn" type="button" hidden>Reset</button>
+      </div>
+    </section>
+
+    <!-- 05 MAKING -->
+    <section id="making" class="making section-pad">
+      <div class="section-heading reveal">
+        <p class="section-number">04 / MAKING THE THING</p>
+        <h2>I learned the parts by making them work.</h2>
+        <p>I started with almost no experience in electronics, coding or 3D printing. I tested one component at a time, then began combining them.</p>
+      </div>
+      <div class="component-grid">
+        <article class="component reveal"><span>01</span><h3>ESP32</h3><p>First, I checked whether the board itself was working.</p></article>
+        <article class="component reveal"><span>02</span><h3>MICROPHONE</h3><p>I tested sound values through the serial monitor.</p></article>
+        <article class="component reveal"><span>03</span><h3>LEDs</h3><p>I added the lights and tested their response.</p></article>
+        <article class="component reveal"><span>04</span><h3>PROXIMITY SENSOR</h3><p>I tested whether the phone distance could be detected.</p></article>
+      </div>
+      <div class="photo-strip reveal">
+        <figure><img src="assets/p12_img1.jpeg" alt="Electronics prototype with wires and components"></figure>
+        <figure><img src="assets/p12_img3.jpeg" alt="ESP32, wires and components on a breadboard"></figure>
+        <figure><img src="assets/p11_img2.jpeg" alt="Proximity sensor and electronics on a breadboard"></figure>
+      </div>
+      <div class="code-detail reveal">
+        <div>
+          <p class="mono-label">TESTING / SERIAL MONITOR</p>
+          <h3>One component at a time.</h3>
+        </div>
+        <img src="assets/p07_img1.png" alt="Screenshot of ESP32 test code">
+      </div>
+    </section>
+
+    <!-- 06 FAILURE -->
+    <section class="failure dark-section section-pad" id="failure">
+      <div class="failure-copy reveal">
+        <p class="section-number">05 / FAILURE + ITERATION</p>
+        <h2>Nothing worked all at once.</h2>
+        <p>A code that worked for one component did not always work when another was added. Sometimes a jumper wire was not working. Sometimes a connection was loose. Sometimes I needed another material.</p>
+        <p>I kept changing the code, uploading it, testing it and trying again because I wanted to see the experience I had imagined actually happen.</p>
+      </div>
+      <div class="failure-images reveal">
+        <img src="assets/p28_img3.jpeg" alt="Close-up of electronics and wiring during assembly">
+        <img src="assets/p28_img4.jpeg" alt="Electronics being worked on during the build">
+        <img src="assets/p28_img5.jpeg" alt="Hand holding the electronics assembly">
+      </div>
+      <div class="failure-line mono-note">TEST → BREAK → CHECK → CHANGE → TEST AGAIN</div>
+    </section>
+
+    <!-- 07 FORM -->
+    <section class="form-section section-pad" id="form">
+      <div class="section-heading reveal">
+        <p class="section-number">06 / FROM SKETCH TO OBJECT</p>
+        <h2>The form changed because the making changed.</h2>
+        <p>I did not know how the phone stand would look in the beginning. Sketches, paper forms and the first print helped me understand what the object actually needed.</p>
+      </div>
+      <div class="sketch-grid reveal">
+        <figure><img src="assets/p13_img1.jpeg" alt="Early phone stand sketch"></figure>
+        <figure><img src="assets/p13_img4.jpeg" alt="Phone stand sketch with side profile"></figure>
+        <figure><img src="assets/p13_img5.jpeg" alt="Phone stand concept sketch"></figure>
+        <figure><img src="assets/p15_img2.jpeg" alt="Paper prototype of the phone stand"></figure>
+      </div>
+      <div class="form-progress reveal">
+        <div><span>01</span><strong>SKETCH</strong></div>
+        <div class="arrow">→</div>
+        <div><span>02</span><strong>PAPER FORM</strong></div>
+        <div class="arrow">→</div>
+        <div><span>03</span><strong>3D PRINT</strong></div>
+        <div class="arrow">→</div>
+        <div><span>04</span><strong>FINAL FORM</strong></div>
+      </div>
+      <div class="large-forms reveal">
+        <figure><img src="assets/p16_img1.jpeg" alt="3D printing the phone stand"></figure>
+        <figure><img src="assets/p18_img2.jpeg" alt="3D printed Distraction Hook form"></figure>
+        <figure><img src="assets/p18_img3.jpeg" alt="Printed Distraction Hook shown during making"></figure>
+      </div>
+      <div class="form-note reveal">
+        <span class="red-mark">FORM CHANGE</span>
+        <p>The first print made one thing obvious: the inside needed to be hollow to hold the electronics and wires. I divided the stand into a main body and a sliding back part so the electronics could stay inside and still be accessible.</p>
+      </div>
+    </section>
+
+    <!-- 08 FEEDBACK -->
+    <section class="feedback dark-section section-pad" id="feedback">
+      <div class="section-heading reveal">
+        <p class="section-number">07 / FIRST PROTOTYPE + FEEDBACK</p>
+        <h2>The first presentation gave the object more questions.</h2>
+      </div>
+      <div class="feedback-layout">
+        <figure class="presentation-image reveal">
+          <img src="assets/p20_img1.jpeg" alt="First prototype being presented">
+        </figure>
+        <div class="questions reveal">
+          <p>What is the prototype telling you?</p>
+          <p>Is this design intervention or artefact?</p>
+          <p>Why did you make this?</p>
+          <p>How are you showing distraction through the object?</p>
+          <p>Are you trying to make the moment of distraction more annoying?</p>
+        </div>
+      </div>
+      <div class="sensor-change reveal">
+        <div>
+          <span class="mono-label">REDESIGN</span>
+          <h3>The sensor had to be seen.</h3>
+          <p>I had thought of keeping the proximity sensor inside the stand. I found that it could not work properly when covered by the 3D-printed body, so I made an opening and placed it outside.</p>
+        </div>
+        <img src="assets/p21_img1.jpeg" alt="Opening made in the stand for the proximity sensor">
+      </div>
+    </section>
+
+    <!-- 09 HOW IT WORKS -->
+    <section class="journey section-pad" id="journey">
+      <div class="section-heading reveal">
+        <p class="section-number">08 / HOW DISTRACTION HOOK WORKS</p>
+        <h2>One small sequence.</h2>
+      </div>
+      <div class="journey-track">
+        <div class="journey-item reveal"><span>01</span><b>APPROACH</b><small>Come to the artefact with your phone.</small></div>
+        <div class="journey-item reveal"><span>02</span><b>PLACE PHONE</b><small>Phone sits on the stand.</small></div>
+        <div class="journey-item reveal"><span>03</span><b>START WORKING</b><small>Continue studying or working.</small></div>
+        <div class="journey-item signal-step reveal"><span>04</span><b>NOTIFICATION</b><small>A notification sound arrives.</small></div>
+        <div class="journey-item signal-step reveal"><span>05</span><b>HOOK RESPONDS</b><small>Lights and buzzer respond.</small></div>
+        <div class="journey-item reveal"><span>06</span><b>ATTENTION SHIFTS</b><small>The distraction becomes noticeable.</small></div>
+        <div class="journey-item reveal"><span>07</span><b>CHECK PHONE</b><small>The notification is checked.</small></div>
+        <div class="journey-item reveal"><span>08</span><b>RESPONSE STOPS</b><small>The experience ends.</small></div>
+      </div>
+    </section>
+
+    <!-- 10 FINAL -->
+    <section id="final" class="final dark-section">
+      <div class="section-pad">
+        <div class="section-heading reveal">
+          <p class="section-number">09 / FINAL ARTEFACT</p>
+          <h2>From an idea I could barely explain to an object I could demonstrate.</h2>
+        </div>
+      </div>
+      <div class="final-gallery">
+        <figure class="wide reveal"><img src="assets/p27_img1.jpeg" alt="Final Distraction Hook artefact in presentation space"></figure>
+        <figure class="portrait reveal"><img src="assets/p28_img1.jpeg" alt="Final artefact outdoors"></figure>
+        <figure class="portrait reveal"><img src="assets/p28_img2.jpeg" alt="Hand holding the final electronics assembly"></figure>
+        <figure class="portrait reveal"><img src="assets/p28_img4.jpeg" alt="Electronics inside the final object"></figure>
+      </div>
+      <div class="video-block section-pad reveal">
+        <p class="mono-label">FINAL WORKING ARTEFACT</p>
+        <h3>Watch the experience.</h3>
+        <p>The documentation includes a video of the final working artefact.</p>
+        <a class="video-link" href="https://vimeo.com/1226021478?share=copy" target="_blank" rel="noopener">WATCH ON VIMEO ↗</a>
+      </div>
+    </section>
+
+    <!-- 11 REFLECTION -->
+    <section class="reflection section-pad" id="reflection">
+      <div class="section-heading reveal">
+        <p class="section-number">10 / REFLECTION</p>
+        <h2>I learned it while making it.</h2>
+      </div>
+      <div class="reflection-layout">
+        <p class="closing-quote reveal">“I do not have to know everything before I start.”</p>
+        <div class="reflection-copy reveal">
+          <p>When I started this studio, I had never worked with electronics before. Wires, sensors and coding felt difficult and confusing.</p>
+          <p>I slowly learned to check what could be wrong and try again. I learned that I could learn electronics, coding and 3D printing while making the project, instead of knowing everything before I started.</p>
+          <p>The biggest thing I am taking from these seven weeks is the confidence that I can learn something that initially feels very new to me.</p>
+        </div>
+      </div>
+      <div class="end-mark reveal">
+        <span>DIS</span><span>TRACTION</span><span>HOOK</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>DISTRACTION HOOK / MISRI BHAGAT</span>
+    <span>PROCESS DOCUMENTATION / 7 WEEKS</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
