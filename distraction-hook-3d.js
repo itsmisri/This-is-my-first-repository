@@ -22,9 +22,9 @@
   var width = container.clientWidth || 560;
   var height = container.clientHeight || 640;
 
-  var camera = new THREE.PerspectiveCamera(38, width / height, 0.1, 100);
-  // Default camera angle: slightly elevated front-three-quarter view
-  camera.position.set(2.4, 1.4, 4.2);
+  var camera = new THREE.PerspectiveCamera(36, width / height, 0.1, 100);
+  // Default camera angle: slightly elevated front-three-quarter view centered on the artefact
+  camera.position.set(2.0, 0.8, 3.5);
 
   var renderer = new THREE.WebGLRenderer({
     alpha: true,
@@ -41,33 +41,30 @@
 
   container.appendChild(renderer.domElement);
 
-  // 2. Orbit Controls
+  // 2. Orbit Controls — Full 360° Rotation
   var controls;
   if (typeof THREE.OrbitControls !== 'undefined') {
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.autoRotate = true;
-    controls.autoRotateSpeed = 1.0;
-    controls.enableZoom = true;
-    controls.minDistance = 2.2;
-    controls.maxDistance = 7.5;
-    controls.minPolarAngle = Math.PI * 0.15; // 27 deg from top
-    controls.maxPolarAngle = Math.PI * 0.82; // 148 deg from bottom
-    controls.target.set(0, 0.5, 0);
+    controls.autoRotateSpeed = 0.85;
+    controls.enableZoom = false; // No zoom — rotate only
+    controls.enablePan = false; // Keeps the model centered when orbiting
+    controls.minPolarAngle = Math.PI * 0.12; // Allows top-down inspection
+    controls.maxPolarAngle = Math.PI * 0.85; // Allows looking from below
+    controls.target.set(0, 0.02, 0); // Geometric center of the phone stand
   }
 
-  // Pause auto-rotation and fade out drag hint when user interacts
+  // Pause auto-rotation when user moves or touches the model, resuming after idle
   var autoRotateTimeout;
-  var hintEl = document.getElementById('artefactHint');
   function pauseAutoRotate() {
-    if (hintEl) hintEl.style.opacity = '0';
     if (!controls) return;
     controls.autoRotate = false;
     clearTimeout(autoRotateTimeout);
     autoRotateTimeout = setTimeout(function () {
       controls.autoRotate = true;
-    }, 3800);
+    }, 4000);
   }
   renderer.domElement.addEventListener('pointerdown', pauseAutoRotate);
   renderer.domElement.addEventListener('wheel', pauseAutoRotate, { passive: true });
@@ -101,50 +98,14 @@
     metalness: 0.35,
   });
 
-  // LED materials (Translucent with vibrant emissive bloom)
-  var ledRedMaterial = new THREE.MeshStandardMaterial({
-    color: 0xff3b30,
-    emissive: 0xff1e10,
-    emissiveIntensity: 1.4,
-    roughness: 0.15,
-    metalness: 0.05,
-    transparent: true,
-    opacity: 0.95
-  });
-
-  var ledYellowMaterial = new THREE.MeshStandardMaterial({
-    color: 0xffb703,
-    emissive: 0xffa000,
-    emissiveIntensity: 1.4,
-    roughness: 0.15,
-    metalness: 0.05,
-    transparent: true,
-    opacity: 0.95
-  });
-
+  // LED metallic bezels/collars
   var ledBezelMaterial = new THREE.MeshStandardMaterial({
     color: 0x33353e,
     metalness: 0.8,
     roughness: 0.3
   });
 
-  // Lamp shade material (matte industrial black)
-  var shadeMaterial = new THREE.MeshStandardMaterial({
-    color: 0x141519,
-    roughness: 0.5,
-    metalness: 0.25,
-    side: THREE.DoubleSide
-  });
-
-  // Bulb glow material
-  var bulbMaterial = new THREE.MeshStandardMaterial({
-    color: 0xfff6dd,
-    emissive: 0xffeed0,
-    emissiveIntensity: 2.5,
-    roughness: 0.1
-  });
-
-  // 4. Artefact Assembly Group (can rotate together)
+  // 4. Artefact Assembly Group
   var artefactGroup = new THREE.Group();
   scene.add(artefactGroup);
 
@@ -190,14 +151,13 @@
   artefactGroup.add(standMesh);
 
   // --- B. Slanted Face Features & Ultrasonic Sensor ---
-  // Midpoint of slanted face: Z = 0.015, Y = 0.25. Slant angle theta ≈ 21.8 deg.
-  var theta = Math.atan(0.40); // 0.3805 rad
+  var theta = Math.atan(0.40); // Slant angle ≈ 21.8 deg
   var faceGroup = new THREE.Group();
   faceGroup.position.set(0, 0.25, 0.015);
   faceGroup.rotation.x = -theta;
   artefactGroup.add(faceGroup);
 
-  // Horizontal panel seam divider lines (giving the authentic layered design)
+  // Horizontal panel seam divider lines
   var seamMaterial = new THREE.MeshStandardMaterial({
     color: 0x090a0d,
     roughness: 0.8,
@@ -261,21 +221,22 @@
     faceGroup.add(eyeGroup);
   });
 
-  // --- C. Top Indicator LEDs ---
+  // --- C. Top Indicator Flickering LEDs ---
   var topY = 1.255;
   var topZ = -0.61;
-  var ledPositions = [
-    { x: -0.45, mat: ledRedMaterial, color: 0xff3b30 },
-    { x: -0.15, mat: ledYellowMaterial, color: 0xffb703 },
-    { x: 0.15, mat: ledYellowMaterial, color: 0xffb703 },
-    { x: 0.45, mat: ledRedMaterial, color: 0xff3b30 }
+
+  var ledConfigs = [
+    { x: -0.45, color: 0xff3b30, emissive: 0xff2010, phase: 0.0, speed: 1.0 },
+    { x: -0.15, color: 0xffb703, emissive: 0xff9900, phase: 1.8, speed: 1.15 },
+    { x:  0.15, color: 0xffb703, emissive: 0xff9900, phase: 3.5, speed: 0.92 },
+    { x:  0.45, color: 0xff3b30, emissive: 0xff2010, phase: 5.2, speed: 1.08 }
   ];
 
-  var ledLights = [];
+  var activeLeds = [];
 
-  ledPositions.forEach(function (led) {
+  ledConfigs.forEach(function (cfg) {
     var ledGroup = new THREE.Group();
-    ledGroup.position.set(led.x, topY, topZ);
+    ledGroup.position.set(cfg.x, topY, topZ);
 
     // Base collar
     var collar = new THREE.Mesh(
@@ -285,115 +246,81 @@
     collar.position.y = 0.015;
     ledGroup.add(collar);
 
+    // Individual standard material so each LED flickers dynamically
+    var ledMat = new THREE.MeshStandardMaterial({
+      color: cfg.color,
+      emissive: cfg.emissive,
+      emissiveIntensity: 1.6,
+      roughness: 0.15,
+      metalness: 0.05,
+      transparent: true,
+      opacity: 0.95
+    });
+
     // LED bulb body (cylinder + rounded dome top)
     var bulbCylinder = new THREE.Mesh(
       new THREE.CylinderGeometry(0.042, 0.042, 0.065, 16),
-      led.mat
+      ledMat
     );
     bulbCylinder.position.y = 0.06;
     ledGroup.add(bulbCylinder);
 
     var bulbDome = new THREE.Mesh(
       new THREE.SphereGeometry(0.042, 16, 16, 0, Math.PI * 2, 0, Math.PI / 2),
-      led.mat
+      ledMat
     );
     bulbDome.position.y = 0.092;
     ledGroup.add(bulbDome);
 
-    // Local point light for colored bounce
-    var pLight = new THREE.PointLight(led.color, 0.7, 0.85);
+    // Local point light for dynamic colored bounce onto the stand top
+    var pLight = new THREE.PointLight(cfg.color, 0.85, 1.0);
     pLight.position.y = 0.14;
     ledGroup.add(pLight);
-    ledLights.push(pLight);
+
+    activeLeds.push({
+      material: ledMat,
+      pointLight: pLight,
+      phase: cfg.phase,
+      speed: cfg.speed
+    });
 
     artefactGroup.add(ledGroup);
   });
 
-  // --- D. Overhead Hanging Lamp & Dramatic Volumetric Beam ---
-  var lampY = 2.62;
-  var lampZ = -0.61;
-  var lampGroup = new THREE.Group();
-  lampGroup.position.set(0, lampY, lampZ);
-  artefactGroup.add(lampGroup);
-
-  // Suspension Cord extending upwards
-  var cord = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.01, 0.01, 2.8, 12),
-    new THREE.MeshStandardMaterial({ color: 0x0f1013, roughness: 0.6 })
-  );
-  cord.position.y = 1.4;
-  lampGroup.add(cord);
-
-  // Conical Lamp Shade
-  var shadeGeom = new THREE.CylinderGeometry(0.07, 0.42, 0.28, 32, 1, true);
-  var shade = new THREE.Mesh(shadeGeom, shadeMaterial);
-  shade.position.y = 0;
-  lampGroup.add(shade);
-
-  // Top finial ring on shade
-  var finial = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.08, 0.08, 0.04, 16),
-    new THREE.MeshStandardMaterial({ color: 0x22242b, roughness: 0.3 })
-  );
-  finial.position.y = 0.14;
-  lampGroup.add(finial);
-
-  // Glowing bulb inside shade
-  var bulb = new THREE.Mesh(
-    new THREE.SphereGeometry(0.088, 24, 24),
-    bulbMaterial
-  );
-  bulb.position.y = -0.06;
-  lampGroup.add(bulb);
-
-  // Downward warm spotlight illuminating the device
-  var spotLight = new THREE.SpotLight(0xfffaec, 2.6, 10, Math.PI / 4.4, 0.38, 1.1);
-  spotLight.position.set(0, -0.06, 0);
-  spotLight.target.position.set(0, -2.0, 0.15);
-  spotLight.castShadow = true;
-  spotLight.shadow.mapSize.width = 1024;
-  spotLight.shadow.mapSize.height = 1024;
-  spotLight.shadow.camera.near = 0.2;
-  spotLight.shadow.camera.far = 8;
-  spotLight.shadow.bias = -0.001;
-  lampGroup.add(spotLight);
-  lampGroup.add(spotLight.target);
-
-  // Volumetric Light Ray Cone Mesh (matches p01_img1.png atmospheric cone beam)
-  var coneBeamGeom = new THREE.ConeGeometry(0.85, 1.8, 32, 1, true);
-  coneBeamGeom.rotateX(Math.PI); // Open end downwards
-  coneBeamGeom.translate(0, -0.9, 0);
-
-  var coneBeamMaterial = new THREE.MeshBasicMaterial({
-    color: 0xffe699,
-    transparent: true,
-    opacity: 0.13,
-    side: THREE.DoubleSide,
-    depthWrite: false,
-    blending: THREE.AdditiveBlending
-  });
-
-  var coneBeam = new THREE.Mesh(coneBeamGeom, coneBeamMaterial);
-  lampGroup.add(coneBeam);
-
-  // --- E. Ambient & Studio Lighting ---
-  var ambLight = new THREE.AmbientLight(0xffffff, 0.45);
+  // --- D. Studio Lighting Setup (Spotlight removed, clean high-end studio lighting) ---
+  var ambLight = new THREE.AmbientLight(0xffffff, 0.72);
   scene.add(ambLight);
 
-  // Cyan rim light from front-left (complements website theme)
-  var cyanRim = new THREE.DirectionalLight(0x00e5ff, 0.65);
-  cyanRim.position.set(-3.5, 2.0, 2.5);
+  // Key directional light from top right front for sharp chamfers and depth
+  var keyLight = new THREE.DirectionalLight(0xffffff, 1.15);
+  keyLight.position.set(3.0, 4.0, 3.5);
+  keyLight.castShadow = true;
+  keyLight.shadow.mapSize.width = 1024;
+  keyLight.shadow.mapSize.height = 1024;
+  keyLight.shadow.camera.near = 0.5;
+  keyLight.shadow.camera.far = 10;
+  keyLight.shadow.bias = -0.001;
+  scene.add(keyLight);
+
+  // Soft fill light from front left to illuminate shadows
+  var fillLight = new THREE.DirectionalLight(0xdde8f8, 0.55);
+  fillLight.position.set(-3.0, 2.0, 2.5);
+  scene.add(fillLight);
+
+  // Cyan theme rim accent light
+  var cyanRim = new THREE.DirectionalLight(0x00e5ff, 0.6);
+  cyanRim.position.set(-3.2, 2.2, -2.0);
   scene.add(cyanRim);
 
-  // Soft purple backlight for subtle depth contrast
-  var purpleFill = new THREE.DirectionalLight(0x7b2fff, 0.35);
-  purpleFill.position.set(2.5, 1.5, -3.0);
-  scene.add(purpleFill);
+  // Purple rim accent light
+  var purpleRim = new THREE.DirectionalLight(0x7b2fff, 0.4);
+  purpleRim.position.set(2.8, 1.8, -2.5);
+  scene.add(purpleRim);
 
-  // Key light from top right for crisp chamfer highlights
-  var keyLight = new THREE.DirectionalLight(0xffffff, 0.55);
-  keyLight.position.set(3.0, 4.0, 3.5);
-  scene.add(keyLight);
+  // Soft top overhead light for the top plate bevels
+  var topLight = new THREE.DirectionalLight(0xffffff, 0.45);
+  topLight.position.set(0, 4.2, 0.4);
+  scene.add(topLight);
 
   // Subtle ground shadow plane to ground the artefact
   var shadowPlaneGeom = new THREE.PlaneGeometry(3.5, 3.5);
@@ -422,68 +349,42 @@
   shadowMesh.position.y = -1.26;
   artefactGroup.add(shadowMesh);
 
-  // 5. Interactive UI Toolbar Actions
-  var btnReset = document.getElementById('btnResetView');
-  if (btnReset) {
-    btnReset.addEventListener('click', function () {
-      if (controls) {
-        controls.reset();
-        camera.position.set(2.4, 1.4, 4.2);
-        controls.target.set(0, 0.5, 0);
-        controls.update();
-        controls.autoRotate = true;
-      }
-    });
-  }
+  // --- E. Dynamic Flickering Light Algorithm ---
+  function calculateFlicker(time, phaseOffset, speed) {
+    var t = time * speed * 2.6 + phaseOffset;
 
-  var btnLamp = document.getElementById('btnToggleLamp');
-  if (btnLamp) {
-    var lampOn = true;
-    btnLamp.addEventListener('click', function () {
-      lampOn = !lampOn;
-      spotLight.visible = lampOn;
-      coneBeam.visible = lampOn;
-      bulbMaterial.emissiveIntensity = lampOn ? 2.5 : 0.2;
-      btnLamp.classList.toggle('active', lampOn);
-    });
-  }
+    // 1. Rapid diode micro-jitter (electrical frequency fluctuations)
+    var jitter1 = Math.sin(t * 19.3);
+    var jitter2 = Math.sin(t * 37.7);
+    var jitter3 = Math.cos(t * 7.1);
+    var microJitter = jitter1 * 0.4 + jitter2 * 0.35 + jitter3 * 0.25;
 
-  var btnAlert = document.getElementById('btnTriggerLed');
-  if (btnAlert) {
-    btnAlert.addEventListener('click', function () {
-      triggerLedAlert();
-    });
-  }
+    // 2. Notification alert burst cycle (~2.2s periodicity)
+    var cycle = (t * 0.8) % (Math.PI * 2);
+    var burst = 0;
 
-  var alertAnimationActive = false;
-  function triggerLedAlert() {
-    if (alertAnimationActive) return;
-    alertAnimationActive = true;
-    var startTime = performance.now();
-    var origRedInt = ledRedMaterial.emissiveIntensity;
-    var origYelInt = ledYellowMaterial.emissiveIntensity;
-
-    function flashLoop(now) {
-      var elapsed = now - startTime;
-      if (elapsed > 2400) {
-        ledRedMaterial.emissiveIntensity = origRedInt;
-        ledYellowMaterial.emissiveIntensity = origYelInt;
-        ledLights.forEach(function (l) { l.intensity = 0.7; });
-        alertAnimationActive = false;
-        return;
-      }
-      var pulse = (Math.sin(elapsed * 0.02) + 1) / 2;
-      ledRedMaterial.emissiveIntensity = 0.5 + pulse * 2.8;
-      ledYellowMaterial.emissiveIntensity = 0.5 + (1 - pulse) * 2.8;
-      ledLights.forEach(function (l, idx) {
-        l.intensity = idx % 2 === 0 ? 0.3 + pulse * 1.5 : 0.3 + (1 - pulse) * 1.5;
-      });
-      requestAnimationFrame(flashLoop);
+    if (cycle < 0.7) {
+      // Rapid staccato double/triple flash pattern
+      var flash = Math.sin(cycle * (Math.PI / 0.7) * 3);
+      burst = flash > 0 ? flash * 1.7 : -0.25;
+    } else if (cycle > 1.8 && cycle < 2.3) {
+      // Quick irregular tremor / alert stutter
+      var stutter = Math.sin((cycle - 1.8) * 24.0);
+      burst = stutter > 0.2 ? 0.95 : -0.4;
+    } else if (cycle > 3.8 && cycle < 4.2) {
+      // Intense alert ping flare
+      burst = Math.sin((cycle - 3.8) * (Math.PI / 0.4)) * 1.4;
     }
-    requestAnimationFrame(flashLoop);
+
+    // 3. Occasional spontaneous micro-spark
+    var spark = Math.sin(t * 43.0) > 0.88 ? (Math.random() * 0.7 - 0.2) : 0;
+
+    // Base brightness oscillates between dim flicker (0.25) and intense flare (3.4)
+    var intensity = 1.35 + microJitter * 0.6 + burst + spark;
+    return Math.max(0.2, Math.min(3.4, intensity));
   }
 
-  // 6. Responsive Resize Handling
+  // 5. Responsive Resize Handling
   function onResize() {
     if (!container) return;
     var newW = container.clientWidth;
@@ -500,24 +401,19 @@
     ro.observe(container);
   }
 
-  // 7. Animation Loop
+  // 6. Animation Loop
   var clock = new THREE.Clock();
 
   function animate() {
     requestAnimationFrame(animate);
-    var delta = clock.getDelta();
     var time = clock.getElapsedTime();
 
-    // Subtle gentle breathing pulse on the indicator LEDs when idle
-    if (!alertAnimationActive) {
-      var subtlePulse = Math.sin(time * 2.2) * 0.25;
-      ledRedMaterial.emissiveIntensity = 1.35 + subtlePulse;
-      ledYellowMaterial.emissiveIntensity = 1.35 + subtlePulse;
-    }
-
-    // Subtle atmospheric shimmer on the volumetric cone
-    if (coneBeam && coneBeam.visible) {
-      coneBeamMaterial.opacity = 0.12 + Math.sin(time * 1.6) * 0.025;
+    // Dynamically flicker all indicator lights and their bounce illumination
+    for (var i = 0; i < activeLeds.length; i++) {
+      var led = activeLeds[i];
+      var intensity = calculateFlicker(time, led.phase, led.speed);
+      led.material.emissiveIntensity = intensity;
+      led.pointLight.intensity = intensity * 0.65;
     }
 
     if (controls) {
