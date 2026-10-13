@@ -61,3 +61,43 @@ function resetNotification() {
 
 triggerBtn.addEventListener("click", triggerNotification);
 resetBtn.addEventListener("click", resetNotification);
+
+// Photographic Marquee Interactive Controls (Page 5: Making the thing)
+(function initMarquee() {
+  const outer = document.getElementById("makingMarqueeOuter");
+  const track = document.getElementById("makingMarqueeTrack");
+  const playBtn = document.getElementById("marqueeTogglePlay");
+  const playIcon = document.getElementById("marqueePlayIcon");
+  const playText = document.getElementById("marqueePlayText");
+  const prevBtn = document.getElementById("marqueeScrollLeft");
+  const nextBtn = document.getElementById("marqueeScrollRight");
+
+  if (!track || !outer) return;
+
+  let isPaused = false;
+
+  function togglePlay() {
+    isPaused = !isPaused;
+    track.classList.toggle("is-paused", isPaused);
+    if (playIcon) playIcon.textContent = isPaused ? "▶" : "❚❚";
+    if (playText) playText.textContent = isPaused ? "Play" : "Pause";
+  }
+
+  if (playBtn) {
+    playBtn.addEventListener("click", togglePlay);
+  }
+
+  // Smooth step buttons
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      outer.scrollBy({ left: -360, behavior: "smooth" });
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      outer.scrollBy({ left: 360, behavior: "smooth" });
+    });
+  }
+})();
+

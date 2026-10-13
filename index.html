@@ -1,12 +1,19 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Distraction Hook — process documentation by Misri Bhagat, M.A. Experience Design.">
   <title>Distraction Hook — Misri Bhagat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <!-- Three.js 3D WebGL Library -->
+  
 </head>
+
 <body>
   <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
 
@@ -20,60 +27,246 @@
   </header>
 
   <main id="top">
+
     <!-- 01 HERO -->
     <section class="hero section-pad">
+
       <div class="hero-copy reveal">
-        <p class="eyebrow">STUDIO: BY ANY MEDIA NECESSARY / PROCESS DOCUMENTATION</p>
-        <h1>Distraction<br><em>Hook</em></h1>
-        <p class="hero-question">What happens in the small moment when a notification pulls our attention away?</p>
-        <div class="meta">
-          <span>7 WEEKS</span>
-          <span>MISRI BHAGAT</span>
-          <span>M.A. EXPERIENCE DESIGN — YEAR 2</span>
+
+        <!-- ── Context block (TOP) ── -->
+        <div class="hero-info-block">
+          <p class="eyebrow">
+            <span class="meta-label">STUDIO:</span> BY ANY MEDIA NECESSARY / PROCESS DOCUMENTATION<span
+              class="meta-pipe"> &nbsp;|&nbsp; </span><span class="meta-label">DURATION:</span> 7 WEEKS
+          </p>
+          <p class="eyebrow eyebrow-row2">
+            <span class="meta-label">BY:</span> MISRI BHAGAT<span class="meta-pipe"> &nbsp;|&nbsp; </span><span
+              class="meta-label">PROGRAMME:</span> M.A. EXPERIENCE DESIGN — YEAR 2
+          </p>
         </div>
+
+        <!-- ── Blue Line Before Distraction Hook Title ── -->
+        <div class="hero-divider-line"></div>
+
+        <!-- ── Title block ── -->
+        <div class="hero-title-block">
+          <h1>
+            Distraction<br><em>Hook</em>
+          </h1>
+          <p class="hero-question">
+            Don’t fight the distraction. HOOK IT.
+          </p>
+        </div>
+
       </div>
-      <figure class="hero-object reveal">
-        <img src="assets/p01_img1.png" alt="Views of the Distraction Hook phone stand with red and amber lights">
-        <figcaption>Final artefact / phone stand + electronics</figcaption>
+
+
+      <!-- 01 HERO: 360° INTERACTIVE 3D ARTEFACT (TRANSPARENT BACKGROUND) -->
+      <figure class="hero-object reveal hook-light-scene">
+        <div class="artefact-3d-stage" id="heroArtefactStage">
+          <!-- WebGL 3D Canvas (Transparent background preserving site aesthetics) -->
+          <div id="hook3dCanvasContainer" class="hook-3d-canvas-container"></div>
+
+          <!-- Top 360 Badge -->
+          <div class="artefact-3d-badge">
+            <span class="badge-dot"></span> 360° 3D ARTEFACT
+          </div>
+
+          <!-- Interaction Hint -->
+          <div class="artefact-3d-hint">
+            <span class="hint-icon">↺</span> Drag to rotate 360°
+          </div>
+
+          <!-- Floating Micro-Controls -->
+          <div class="artefact-3d-toolbar">
+            <button type="button" class="tool-btn" id="btnResetView" title="Reset 3D view" aria-label="Reset 3D view">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+              <span>Reset</span>
+            </button>
+            <button type="button" class="tool-btn active" id="btnToggleLamp" title="Toggle Spotlight Beam" aria-label="Toggle Spotlight">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+              <span>Spotlight</span>
+            </button>
+            <button type="button" class="tool-btn" id="btnTriggerLed" title="Test Notification Alert" aria-label="Trigger LED Alert">
+              <span class="tool-led-dot"></span>
+              <span>Alert</span>
+            </button>
+          </div>
+        </div>
+
+        <figcaption>
+          caught by <span>NOTIFICATION</span>
+        </figcaption>
       </figure>
+
     </section>
 
-    <!-- 02 QUESTION -->
-    <section id="question" class="dark-section">
-      <div class="section-pad narrow reveal">
+    <!-- 02 QUESTION — HOW IT ALL STARTED -->
+    <section id="question" class="dark-section tech-bg-section section-pad">
+      <div class="question-container narrow-wide reveal">
+
         <p class="section-number">01 / THE QUESTION</p>
-        <h2>I started by asking what happens when technology enters an existing system.</h2>
-        <div class="two-col">
-          <p>The studio began with the Luddite Movement, Critical Making and Protocol. I kept returning to how technology changes the systems and habits already around us.</p>
-          <p>I moved from larger systems to something much closer to everyday life: my relationship with my phone.</p>
+        <h2 class="question-title">
+          How it all started....
+        </h2>
+        <p class="question-subtitle">
+          From the Luddite Movement to Distraction Hook
+        </p>
+
+        <!-- ── Radial Mind Map / Infographic Diagram Cards ── -->
+        <div class="radial-infographic reveal">
+
+          <!-- Node 01: Luddite Movement -->
+          <div class="radial-node node-01" id="qCard1" >
+            <div class="node-badge">01</div>
+            <div class="node-content">
+              <h3>Luddite Movement</h3>
+              <p>During The Industrial Revolution, Machines Entered Textile Production And Threatened Skilled Workers'
+                Jobs And Livelihoods. In Response, The Luddites Destroyed Machines As A Form Of Protest.</p>
+              <p class="card-takeaway">The Luddites Responded To The Technology Changing Their Work. I Respond To
+                Technology Changing My Attention.</p>
+            </div>
+            <div class="node-connector line-01" aria-hidden="true"></div>
+          </div>
+
+          <!-- Central Focal Hub: DISTRACTION HOOK -->
+          <div class="radial-center-hub" id="qCardCenter">
+            <div class="hub-core">
+              <h3 class="hub-title">DISTRACTION HOOK</h3>
+              <p class="hub-description">
+                Distraction Hook Explores The Moment When A Notification Pulls Our Attention Away From Work. Instead Of
+                Blocking The Distraction, It Makes The Moment Visible And Audible Through Light And Sound.
+              </p>
+            </div>
+          </div>
+
+          <!-- Node 02: Critical Making -->
+          <div class="radial-node node-02" id="qCard2" >
+            <div class="node-badge">02</div>
+            <div class="node-content">
+              <h3>Critical Making</h3>
+              <p>Critical Making Connects Thinking With Making. It Uses The Process Of Making And Experimenting To
+                Understand Ideas, Technology And Their Impact.</p>
+              <p class="card-takeaway">I Understood The Idea Of Distraction By Making And Testing It.</p>
+            </div>
+            <div class="node-connector line-02" aria-hidden="true"></div>
+          </div>
+
+          <!-- Node 03: Protocol: Tactical Media -->
+          <div class="radial-node node-03" id="qCard3" >
+            <div class="node-badge">03</div>
+            <div class="node-content">
+              <h3>Protocol: Tactical Media</h3>
+              <p>Tactical Media Explores How Existing Technologies And Systems Can Be Used In Unexpected Ways. Instead
+                Of Rejecting Technology, It Looks At How We Can Work Within A System To Question It.</p>
+              <p class="card-takeaway">I Started Thinking About How The Same Technology That Distracts Me Could Become
+                Part Of The Experience.</p>
+            </div>
+            <div class="node-connector line-03" aria-hidden="true"></div>
+          </div>
+
         </div>
-      </div>
-      <div class="quote-wrap reveal">
-        <p class="giant-quote">“I am doing something. The phone gives me a notification. I notice it. My attention moves towards the phone.”</p>
-      </div>
-      <div class="section-pad narrow reveal">
-        <div class="two-col">
-          <p>I was not trying to say that phones are bad or that people should stop using them. I wanted to understand the small everyday behaviour that happens when a notification pulls us away from what we were already doing.</p>
-          <p class="mono-note">LUDDITES → CRITICAL MAKING → PROTOCOL → NOTIFICATION → ATTENTION SHIFT</p>
-        </div>
+
       </div>
     </section>
 
-    <!-- 03 ATTENTION -->
-    <section class="attention section-pad" id="attention">
-      <div class="section-heading reveal">
+    <!-- 03 ATTENTION — FROM TECHNOLOGY TO ATTENTION (3D HOLOGRAPHIC PIPELINE) -->
+    <section class="attention tech-bg-section section-pad" id="attention">
+      <div class="attention-container narrow-wide reveal">
+
         <p class="section-number">02 / FROM TECHNOLOGY TO ATTENTION</p>
-        <h2>The idea became smaller.</h2>
-        <p>From changing systems to one tiny, familiar moment.</p>
-      </div>
-      <div class="attention-sequence reveal" aria-label="Notification and attention sequence">
-        <div class="attention-step"><b>01</b><span>WORK</span><small>already doing something</small></div>
-        <div class="signal-line"></div>
-        <div class="attention-step signal"><b>02</b><span>NOTIFICATION</span><small>small sound</small></div>
-        <div class="signal-line"></div>
-        <div class="attention-step"><b>03</b><span>NOTICE</span><small>attention shifts</small></div>
-        <div class="signal-line"></div>
-        <div class="attention-step"><b>04</b><span>PHONE</span><small>check it</small></div>
+
+        <!-- ── Top Quote Block with Cyan Divider Lines ── -->
+        <div class="quote-banner-block">
+          <div class="hero-divider-line"></div>
+          <p class="banner-quote">
+            “I am doing something. The phone gives me a notification. I notice it. My attention moves towards the
+            phone.”
+          </p>
+          <div class="hero-divider-line"></div>
+        </div>
+
+        <!-- ── Heading & Subheading ── -->
+        <div class="attention-heading">
+          <h2>The idea became smaller.</h2>
+          <p class="attention-subtitle">From changing systems to one tiny, familiar moment.</p>
+        </div>
+
+        <!-- ── 4 Step Sequence Flowchart with Content-Specific Illustrations ── -->
+        <div class="attention-sequence-grid">
+
+          <!-- Step 1: WORKING -->
+          <div class="sequence-card active-stage-card">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="4" width="20" height="12" rx="2" />
+                <path d="M6 20h12M10 16v4M14 16v4" />
+              </svg>
+            </div>
+            <h3>WORKING</h3>
+            <small>Already Doing Something</small>
+          </div>
+
+          <!-- Flow Arrow 1 -->
+          <div class="sequence-arrow" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+
+          <!-- Step 2: NOTIFICATION -->
+          <div class="sequence-card signal-card">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                <circle cx="18" cy="4" r="2.5" fill="var(--hero-accent)" stroke="none" />
+              </svg>
+            </div>
+            <h3>NOTIFICATION</h3>
+            <small>Small Sound</small>
+          </div>
+
+          <!-- Flow Arrow 2 -->
+          <div class="sequence-arrow" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+
+          <!-- Step 3: NOTICE -->
+          <div class="sequence-card">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </div>
+            <h3>NOTICE</h3>
+            <small>Attention Shifts</small>
+          </div>
+
+          <!-- Flow Arrow 3 -->
+          <div class="sequence-arrow" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+
+          <!-- Step 4: PHONE -->
+          <div class="sequence-card">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="6" y="2" width="12" height="20" rx="3" />
+                <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3" />
+              </svg>
+            </div>
+            <h3>PHONE</h3>
+            <small>Check It</small>
+          </div>
+
+        </div>
+
       </div>
     </section>
 
@@ -82,7 +275,8 @@
       <div class="interactive-intro reveal">
         <p class="section-number">03 / TRY THE MOMENT</p>
         <h2>Trigger a distraction.</h2>
-        <p>The physical artefact listens for a notification sound while the phone is on the stand. Here, the interaction is simplified for the web.</p>
+        <p>The physical artefact listens for a notification sound while the phone is on the stand. Here, the interaction
+          is simplified for the web.</p>
       </div>
       <div class="hook-demo reveal" id="hookDemo">
         <div class="demo-phone" aria-live="polite">
@@ -109,107 +303,222 @@
       </div>
     </section>
 
-    <!-- 05 MAKING -->
-    <section id="making" class="making section-pad">
-      <div class="section-heading reveal">
+    <!-- 05 MAKING THE THING (PAGE 5) -->
+    <section id="making" class="making-page tech-bg-section section-pad">
+      <div class="making-header-container reveal">
         <p class="section-number">04 / MAKING THE THING</p>
-        <h2>I learned the parts by making them work.</h2>
-        <p>I started with almost no experience in electronics, coding or 3D printing. I tested one component at a time, then began combining them.</p>
-      </div>
-      <div class="component-grid">
-        <article class="component reveal"><span>01</span><h3>ESP32</h3><p>First, I checked whether the board itself was working.</p></article>
-        <article class="component reveal"><span>02</span><h3>MICROPHONE</h3><p>I tested sound values through the serial monitor.</p></article>
-        <article class="component reveal"><span>03</span><h3>LEDs</h3><p>I added the lights and tested their response.</p></article>
-        <article class="component reveal"><span>04</span><h3>PROXIMITY SENSOR</h3><p>I tested whether the phone distance could be detected.</p></article>
-      </div>
-      <div class="photo-strip reveal">
-        <figure><img src="assets/p12_img1.jpeg" alt="Electronics prototype with wires and components"></figure>
-        <figure><img src="assets/p12_img3.jpeg" alt="ESP32, wires and components on a breadboard"></figure>
-        <figure><img src="assets/p11_img2.jpeg" alt="Proximity sensor and electronics on a breadboard"></figure>
-      </div>
-      <div class="code-detail reveal">
-        <div>
-          <p class="mono-label">TESTING / SERIAL MONITOR</p>
-          <h3>One component at a time.</h3>
-        </div>
-        <img src="assets/p07_img1.png" alt="Screenshot of ESP32 test code">
-      </div>
-    </section>
+        <div class="hero-divider-line"></div>
 
-    <!-- 06 FAILURE -->
-    <section class="failure dark-section section-pad" id="failure">
-      <div class="failure-copy reveal">
-        <p class="section-number">05 / FAILURE + ITERATION</p>
-        <h2>Nothing worked all at once.</h2>
-        <p>A code that worked for one component did not always work when another was added. Sometimes a jumper wire was not working. Sometimes a connection was loose. Sometimes I needed another material.</p>
-        <p>I kept changing the code, uploading it, testing it and trying again because I wanted to see the experience I had imagined actually happen.</p>
-      </div>
-      <div class="failure-images reveal">
-        <img src="assets/p28_img3.jpeg" alt="Close-up of electronics and wiring during assembly">
-        <img src="assets/p28_img4.jpeg" alt="Electronics being worked on during the build">
-        <img src="assets/p28_img5.jpeg" alt="Hand holding the electronics assembly">
-      </div>
-      <div class="failure-line mono-note">TEST → BREAK → CHECK → CHANGE → TEST AGAIN</div>
-    </section>
+        <!-- Main Title & Subtitle -->
+        <h2 class="making-main-title">Making the thing</h2>
+        <p class="making-subtitle">
+          Turning the idea into a working object involved testing components, figuring out how they worked together, and making changes along the way.
+        </p>
 
-    <!-- 07 FORM -->
-    <section class="form-section section-pad" id="form">
-      <div class="section-heading reveal">
-        <p class="section-number">06 / FROM SKETCH TO OBJECT</p>
-        <h2>The form changed because the making changed.</h2>
-        <p>I did not know how the phone stand would look in the beginning. Sketches, paper forms and the first print helped me understand what the object actually needed.</p>
-      </div>
-      <div class="sketch-grid reveal">
-        <figure><img src="assets/p13_img1.jpeg" alt="Early phone stand sketch"></figure>
-        <figure><img src="assets/p13_img4.jpeg" alt="Phone stand sketch with side profile"></figure>
-        <figure><img src="assets/p13_img5.jpeg" alt="Phone stand concept sketch"></figure>
-        <figure><img src="assets/p15_img2.jpeg" alt="Paper prototype of the phone stand"></figure>
-      </div>
-      <div class="form-progress reveal">
-        <div><span>01</span><strong>SKETCH</strong></div>
-        <div class="arrow">→</div>
-        <div><span>02</span><strong>PAPER FORM</strong></div>
-        <div class="arrow">→</div>
-        <div><span>03</span><strong>3D PRINT</strong></div>
-        <div class="arrow">→</div>
-        <div><span>04</span><strong>FINAL FORM</strong></div>
-      </div>
-      <div class="large-forms reveal">
-        <figure><img src="assets/p16_img1.jpeg" alt="3D printing the phone stand"></figure>
-        <figure><img src="assets/p18_img2.jpeg" alt="3D printed Distraction Hook form"></figure>
-        <figure><img src="assets/p18_img3.jpeg" alt="Printed Distraction Hook shown during making"></figure>
-      </div>
-      <div class="form-note reveal">
-        <span class="red-mark">FORM CHANGE</span>
-        <p>The first print made one thing obvious: the inside needed to be hollow to hold the electronics and wires. I divided the stand into a main body and a sliding back part so the electronics could stay inside and still be accessible.</p>
-      </div>
-    </section>
-
-    <!-- 08 FEEDBACK -->
-    <section class="feedback dark-section section-pad" id="feedback">
-      <div class="section-heading reveal">
-        <p class="section-number">07 / FIRST PROTOTYPE + FEEDBACK</p>
-        <h2>The first presentation gave the object more questions.</h2>
-      </div>
-      <div class="feedback-layout">
-        <figure class="presentation-image reveal">
-          <img src="assets/p20_img1.jpeg" alt="First prototype being presented">
-        </figure>
-        <div class="questions reveal">
-          <p>What is the prototype telling you?</p>
-          <p>Is this design intervention or artefact?</p>
-          <p>Why did you make this?</p>
-          <p>How are you showing distraction through the object?</p>
-          <p>Are you trying to make the moment of distraction more annoying?</p>
+        <!-- Center Quote in White and Italics -->
+        <div class="making-quote-wrap">
+          <p class="making-center-quote">
+            <em>Sometimes, we understand an idea better by watching it fail, change, and take shape.</em>
+          </p>
         </div>
       </div>
-      <div class="sensor-change reveal">
-        <div>
-          <span class="mono-label">REDESIGN</span>
-          <h3>The sensor had to be seen.</h3>
-          <p>I had thought of keeping the proximity sensor inside the stand. I found that it could not work properly when covered by the 3D-printed body, so I made an opening and placed it outside.</p>
+
+      <!-- Continuous Horizontally Scrolling Photographic Marquee -->
+      <div class="marquee-container-outer reveal" id="makingMarqueeOuter">
+        <div class="marquee-track" id="makingMarqueeTrack">
+          <!-- SET 1 (Chronological hierarchy: Sketches -> Electronics -> 3D Printing -> Assembly inside 3D Print) -->
+          <div class="marquee-set">
+            <!-- 1. SKETCHES: Col 1 (2 cards: med + med) -->
+            <div class="marquee-col col-1">
+              <div class="shape-card card-med">
+                <img src="assets/p13_img1.jpeg" alt="Initial phone stand concept pencil sketch" loading="lazy" />
+              </div>
+              <div class="shape-card card-med">
+                <img src="assets/p13_img4.jpeg" alt="Front and side elevation sketch with speaker and light" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- 1. SKETCHES & PAPER DRAFTS: Col 2 (2 cards: tall + tall, offset up) -->
+            <div class="marquee-col col-2 col-offset-up">
+              <div class="shape-card card-tall">
+                <img src="assets/p13_img5.jpeg" alt="Concept sketch showing speaker and top indicator lights" loading="lazy" />
+              </div>
+              <div class="shape-card card-tall">
+                <img src="assets/p15_img2.jpeg" alt="2D paper folding net template with dimensions" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- 1 to 2. PAPER MOCKUP TO ELECTRONICS: Col 3 (2 cards: med + med) -->
+            <div class="marquee-col col-3">
+              <div class="shape-card card-med">
+                <img src="assets/p15_img3.jpeg" alt="Folded 1:1 scale paper prototype stand" loading="lazy" />
+              </div>
+              <div class="shape-card card-med">
+                <img src="assets/p12_img2.jpeg" alt="ESP32 microcontroller on breadboard with single LED" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- 2. JOINING ELECTRONICS: Col 4 (2 cards: tall + tall, offset down) -->
+            <div class="marquee-col col-4 col-offset-down">
+              <div class="shape-card card-tall">
+                <img src="assets/p11_img2.jpeg" alt="Microphone sensor module wired to ESP32 on breadboard" loading="lazy" />
+              </div>
+              <div class="shape-card card-tall">
+                <img src="assets/p12_img3.jpeg" alt="Combined components: ESP32, ultrasonic sensor, buzzer, and jumper wires" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- 2. ELECTRONICS DEBUGGING: Col 5 (Single Center Hero Card) -->
+            <div class="marquee-col col-5 col-single">
+              <div class="shape-card card-center-hero">
+                <img src="assets/p28_img5.jpeg" alt="Hand holding breadboard with tangled wiring and sensor array during debugging" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- 3. 3D CAD MODELING: Col 6 (2 cards: tall + tall, offset up) -->
+            <div class="marquee-col col-6 col-offset-up">
+              <div class="shape-card card-tall">
+                <img src="assets/p17_img1.png" alt="Fusion 360 side profile parametric CAD model" loading="lazy" />
+              </div>
+              <div class="shape-card card-tall">
+                <img src="assets/p17_img4.png" alt="Fusion 360 top view with indicator LED holes and back rail slots" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- 3. 3D PRINTING: Col 7 (2 cards: short + tall) -->
+            <div class="marquee-col col-7">
+              <div class="shape-card card-short">
+                <img src="assets/p16_img1.jpeg" alt="First 3D print in solid blue material" loading="lazy" />
+              </div>
+              <div class="shape-card card-tall">
+                <img src="assets/p18_img2.jpeg" alt="FDM 3D printer bed printing hollow enclosure" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- 4. ENCLOSURE REDESIGN & FITTING ELECTRONICS: Col 8 (2 cards: tall + tall, offset down) -->
+            <div class="marquee-col col-8 col-offset-down">
+              <div class="shape-card card-tall">
+                <img src="assets/p18_img3.jpeg" alt="3D printed stand with sliding back panel for electronics access" loading="lazy" />
+              </div>
+              <div class="shape-card card-tall">
+                <img src="assets/p28_img3.jpeg" alt="Fitting electronics, taped LEDs, and wire bundles inside the hollow 3D-printed body" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- 4. SENSOR RETROFIT & FINAL ARTEFACT: Col 9 (2 cards: short + tall) -->
+            <div class="marquee-col col-9">
+              <div class="shape-card card-short">
+                <img src="assets/p21_img1.jpeg" alt="Melting openings on the front of the 3D-printed body to mount the proximity sensor outside" loading="lazy" />
+              </div>
+              <div class="shape-card card-tall">
+                <img src="assets/p28_img1.jpeg" alt="Final assembled Distraction Hook stand with electronics and glowing lights inside" loading="lazy" />
+              </div>
+            </div>
+          </div>
+
+          <!-- SET 2 (Identical Clone for continuous infinite marquee looping) -->
+          <div class="marquee-set" aria-hidden="true">
+            <!-- 1. SKETCHES: Col 1 -->
+            <div class="marquee-col col-1">
+              <div class="shape-card card-med">
+                <img src="assets/p13_img1.jpeg" alt="" loading="lazy" />
+              </div>
+              <div class="shape-card card-med">
+                <img src="assets/p13_img4.jpeg" alt="" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- 1. SKETCHES & PAPER DRAFTS: Col 2 -->
+            <div class="marquee-col col-2 col-offset-up">
+              <div class="shape-card card-tall">
+                <img src="assets/p13_img5.jpeg" alt="" loading="lazy" />
+              </div>
+              <div class="shape-card card-tall">
+                <img src="assets/p15_img2.jpeg" alt="" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- 1 to 2. PAPER MOCKUP TO ELECTRONICS: Col 3 -->
+            <div class="marquee-col col-3">
+              <div class="shape-card card-med">
+                <img src="assets/p15_img3.jpeg" alt="" loading="lazy" />
+              </div>
+              <div class="shape-card card-med">
+                <img src="assets/p12_img2.jpeg" alt="" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- 2. JOINING ELECTRONICS: Col 4 -->
+            <div class="marquee-col col-4 col-offset-down">
+              <div class="shape-card card-tall">
+                <img src="assets/p11_img2.jpeg" alt="" loading="lazy" />
+              </div>
+              <div class="shape-card card-tall">
+                <img src="assets/p12_img3.jpeg" alt="" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- 2. ELECTRONICS DEBUGGING: Col 5 -->
+            <div class="marquee-col col-5 col-single">
+              <div class="shape-card card-center-hero">
+                <img src="assets/p28_img5.jpeg" alt="" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- 3. 3D CAD MODELING: Col 6 -->
+            <div class="marquee-col col-6 col-offset-up">
+              <div class="shape-card card-tall">
+                <img src="assets/p17_img1.png" alt="" loading="lazy" />
+              </div>
+              <div class="shape-card card-tall">
+                <img src="assets/p17_img4.png" alt="" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- 3. 3D PRINTING: Col 7 -->
+            <div class="marquee-col col-7">
+              <div class="shape-card card-short">
+                <img src="assets/p16_img1.jpeg" alt="" loading="lazy" />
+              </div>
+              <div class="shape-card card-tall">
+                <img src="assets/p18_img2.jpeg" alt="" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- 4. ENCLOSURE REDESIGN & FITTING ELECTRONICS: Col 8 -->
+            <div class="marquee-col col-8 col-offset-down">
+              <div class="shape-card card-tall">
+                <img src="assets/p18_img3.jpeg" alt="" loading="lazy" />
+              </div>
+              <div class="shape-card card-tall">
+                <img src="assets/p28_img3.jpeg" alt="" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- 4. SENSOR RETROFIT & FINAL ARTEFACT: Col 9 -->
+            <div class="marquee-col col-9">
+              <div class="shape-card card-short">
+                <img src="assets/p21_img1.jpeg" alt="" loading="lazy" />
+              </div>
+              <div class="shape-card card-tall">
+                <img src="assets/p28_img1.jpeg" alt="" loading="lazy" />
+              </div>
+            </div>
+          </div>
         </div>
-        <img src="assets/p21_img1.jpeg" alt="Opening made in the stand for the proximity sensor">
+
+        <!-- Marquee Controls Toolbar -->
+        <div class="marquee-controls-bar">
+          <button type="button" class="marquee-btn" id="marqueeScrollLeft" aria-label="Scroll left">
+            <span>❮</span> Previous
+          </button>
+          <button type="button" class="marquee-btn" id="marqueeTogglePlay" aria-label="Pause or resume auto scroll">
+            <span id="marqueePlayIcon">❚❚</span> <span id="marqueePlayText">Pause</span>
+          </button>
+          <button type="button" class="marquee-btn" id="marqueeScrollRight" aria-label="Scroll right">
+            Next <span>❯</span>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -220,13 +529,19 @@
         <h2>One small sequence.</h2>
       </div>
       <div class="journey-track">
-        <div class="journey-item reveal"><span>01</span><b>APPROACH</b><small>Come to the artefact with your phone.</small></div>
+        <div class="journey-item reveal"><span>01</span><b>APPROACH</b><small>Come to the artefact with your
+            phone.</small></div>
         <div class="journey-item reveal"><span>02</span><b>PLACE PHONE</b><small>Phone sits on the stand.</small></div>
-        <div class="journey-item reveal"><span>03</span><b>START WORKING</b><small>Continue studying or working.</small></div>
-        <div class="journey-item signal-step reveal"><span>04</span><b>NOTIFICATION</b><small>A notification sound arrives.</small></div>
-        <div class="journey-item signal-step reveal"><span>05</span><b>HOOK RESPONDS</b><small>Lights and buzzer respond.</small></div>
-        <div class="journey-item reveal"><span>06</span><b>ATTENTION SHIFTS</b><small>The distraction becomes noticeable.</small></div>
-        <div class="journey-item reveal"><span>07</span><b>CHECK PHONE</b><small>The notification is checked.</small></div>
+        <div class="journey-item reveal"><span>03</span><b>START WORKING</b><small>Continue studying or working.</small>
+        </div>
+        <div class="journey-item signal-step reveal"><span>04</span><b>NOTIFICATION</b><small>A notification sound
+            arrives.</small></div>
+        <div class="journey-item signal-step reveal"><span>05</span><b>HOOK RESPONDS</b><small>Lights and buzzer
+            respond.</small></div>
+        <div class="journey-item reveal"><span>06</span><b>ATTENTION SHIFTS</b><small>The distraction becomes
+            noticeable.</small></div>
+        <div class="journey-item reveal"><span>07</span><b>CHECK PHONE</b><small>The notification is checked.</small>
+        </div>
         <div class="journey-item reveal"><span>08</span><b>RESPONSE STOPS</b><small>The experience ends.</small></div>
       </div>
     </section>
@@ -240,16 +555,20 @@
         </div>
       </div>
       <div class="final-gallery">
-        <figure class="wide reveal"><img src="assets/p27_img1.jpeg" alt="Final Distraction Hook artefact in presentation space"></figure>
+        <figure class="wide reveal"><img src="assets/p27_img1.jpeg"
+            alt="Final Distraction Hook artefact in presentation space"></figure>
         <figure class="portrait reveal"><img src="assets/p28_img1.jpeg" alt="Final artefact outdoors"></figure>
-        <figure class="portrait reveal"><img src="assets/p28_img2.jpeg" alt="Hand holding the final electronics assembly"></figure>
-        <figure class="portrait reveal"><img src="assets/p28_img4.jpeg" alt="Electronics inside the final object"></figure>
+        <figure class="portrait reveal"><img src="assets/p28_img2.jpeg"
+            alt="Hand holding the final electronics assembly"></figure>
+        <figure class="portrait reveal"><img src="assets/p28_img4.jpeg" alt="Electronics inside the final object">
+        </figure>
       </div>
       <div class="video-block section-pad reveal">
         <p class="mono-label">FINAL WORKING ARTEFACT</p>
         <h3>Watch the experience.</h3>
         <p>The documentation includes a video of the final working artefact.</p>
-        <a class="video-link" href="https://vimeo.com/1226021478?share=copy" target="_blank" rel="noopener">WATCH ON VIMEO ↗</a>
+        <a class="video-link" href="https://vimeo.com/1226021478?share=copy" target="_blank" rel="noopener">WATCH ON
+          VIMEO ↗</a>
       </div>
     </section>
 
@@ -262,9 +581,12 @@
       <div class="reflection-layout">
         <p class="closing-quote reveal">“I do not have to know everything before I start.”</p>
         <div class="reflection-copy reveal">
-          <p>When I started this studio, I had never worked with electronics before. Wires, sensors and coding felt difficult and confusing.</p>
-          <p>I slowly learned to check what could be wrong and try again. I learned that I could learn electronics, coding and 3D printing while making the project, instead of knowing everything before I started.</p>
-          <p>The biggest thing I am taking from these seven weeks is the confidence that I can learn something that initially feels very new to me.</p>
+          <p>When I started this studio, I had never worked with electronics before. Wires, sensors and coding felt
+            difficult and confusing.</p>
+          <p>I slowly learned to check what could be wrong and try again. I learned that I could learn electronics,
+            coding and 3D printing while making the project, instead of knowing everything before I started.</p>
+          <p>The biggest thing I am taking from these seven weeks is the confidence that I can learn something that
+            initially feels very new to me.</p>
         </div>
       </div>
       <div class="end-mark reveal">
@@ -278,6 +600,12 @@
     <span>PROCESS DOCUMENTATION / 7 WEEKS</span>
   </footer>
 
+  <!-- Three.js 3D WebGL Engine & 360 Interactive Artefact Script -->
+  <script src="assets/vendor/three.min.js"></script>
+  <script src="assets/vendor/OrbitControls.js"></script>
   <script src="script.js"></script>
+  <script src="distraction-hook-3d.js"></script>
 </body>
+
 </html>
+
