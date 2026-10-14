@@ -24,7 +24,7 @@
 
   var camera = new THREE.PerspectiveCamera(36, width / height, 0.1, 100);
   // Default camera angle: slightly elevated front-three-quarter view with generous clearance
-  camera.position.set(2.25, 0.9, 3.9);
+  camera.position.set(2.1, 0.7, 3.8);
 
   var renderer = new THREE.WebGLRenderer({
     alpha: true,
@@ -53,7 +53,7 @@
     controls.enablePan = false; // Keeps the model centered when orbiting
     controls.minPolarAngle = Math.PI * 0.12; // Allows top-down inspection
     controls.maxPolarAngle = Math.PI * 0.85; // Allows looking from below
-    controls.target.set(0, 0.02, 0); // Geometric center of the phone stand
+    controls.target.set(0, 0, 0); // Center of scaled model
   }
 
   // Pause auto-rotation when user moves or touches the model, resuming after idle
@@ -107,6 +107,7 @@
 
   // 4. Artefact Assembly Group
   var artefactGroup = new THREE.Group();
+  artefactGroup.scale.set(0.72, 0.72, 0.72);
   scene.add(artefactGroup);
 
   // --- A. Main Stand Body ---
