@@ -1792,40 +1792,148 @@ h2 {
   transform: translateY(-2px);
 }
 
-/* ── Section 11: Reflection ── */
+/* ── Section 10: Reflection (Matching Tech/Cyberpunk Visual Language) ── */
 .reflection {
-  background: var(--paper);
+  position: relative;
+  overflow: hidden;
+  text-align: left;
 }
 
-.reflection-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 70px;
-  align-items: start;
+.reflection-container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.closing-quote {
+.reflection-main-title {
+  font-size: clamp(44px, 6vw, 84px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  color: #ffffff !important;
+  margin: 0 0 16px;
+  text-align: left;
+}
+
+.reflection-main-sub {
   font-family: var(--serif);
-  font-size: clamp(42px, 6vw, 82px);
-  line-height: .95;
-  letter-spacing: -.05em;
+  font-style: italic;
+  font-size: clamp(16px, 1.8vw, 22px);
+  color: var(--hero-accent);
+  margin: 0 0 50px 0;
+  max-width: 800px;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.reflection-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+/* Quote Card styled like central hub from Question page */
+.reflection-quote-card {
+  background: rgba(10, 14, 24, 0.85);
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  border-radius: 20px;
+  padding: clamp(36px, 5vw, 60px) clamp(28px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 45px rgba(0, 229, 255, 0.12), inset 0 0 35px rgba(0, 229, 255, 0.05);
+  backdrop-filter: blur(14px);
+}
+
+.quote-card-badge {
+  position: absolute;
+  top: -14px;
+  left: 36px;
+  background: var(--hero-accent);
+  color: #050b14;
+  font-family: var(--mono);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  padding: 4px 14px;
+  border-radius: 20px;
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.6);
+}
+
+.reflection-quote-card .closing-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(36px, 4.5vw, 60px);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+}
+
+/* Narrative cards stack */
+.reflection-narrative-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.reflection-card {
+  background: rgba(10, 14, 24, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 24px 28px;
+  position: relative;
+  backdrop-filter: blur(14px);
+  transition: all 0.3s ease;
+}
+
+.reflection-card:hover {
+  border-color: rgba(0, 229, 255, 0.45);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 24px rgba(0, 229, 255, 0.12);
+  transform: translateY(-3px);
+}
+
+.card-step-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--hero-accent);
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 2px 8px;
+  background: rgba(0, 229, 255, 0.1);
+  border-radius: 4px;
+  border: 1px solid rgba(0, 229, 255, 0.25);
+}
+
+.reflection-card h4 {
+  font-size: 19px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+.reflection-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(232, 237, 245, 0.85);
   margin: 0;
 }
 
-.reflection-copy {
-  font-size: 17px;
-  max-width: 600px;
-}
-
-.end-mark {
+.reflection .end-mark {
   display: flex;
   justify-content: space-between;
-  margin-top: 150px;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
+  margin-top: 100px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: .08em;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: rgba(232, 237, 245, 0.5);
 }
 
 .footer {
@@ -1834,8 +1942,11 @@ h2 {
   gap: 20px;
   padding: 25px var(--pad);
   font-family: var(--mono);
-  font-size: 9px;
-  border-top: 1px solid var(--line);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  background: #05080c;
+  color: rgba(232, 237, 245, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .reveal {
@@ -1896,7 +2007,7 @@ h2 {
   .hero,
   .interactive,
   .failure,
-  .reflection-layout,
+  .reflection-grid,
   .feedback-layout,
   .sensor-change {
     grid-template-columns: 1fr;
