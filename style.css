@@ -1701,58 +1701,95 @@ h2 {
   transform: translateY(0);
 }
 
-.exp-large {
-  width: clamp(380px, 32vw, 520px);
-  height: clamp(280px, 24vw, 380px);
+/* 5 Photos Marquee Sizing (Matching user reference Image 4) */
+.exp-p1 {
+  width: clamp(240px, 22vw, 320px);
+  height: clamp(320px, 30vw, 420px);
 }
 
-.exp-medium {
-  width: clamp(280px, 22vw, 380px);
-  height: clamp(260px, 22vw, 340px);
+.exp-p2 {
+  width: clamp(340px, 30vw, 460px);
+  height: clamp(260px, 24vw, 340px);
 }
 
-.exp-small {
-  width: clamp(200px, 16vw, 280px);
-  height: clamp(220px, 18vw, 300px);
-  margin-top: -20px;
+.exp-p3 {
+  width: clamp(260px, 24vw, 340px);
+  height: clamp(340px, 32vw, 440px);
 }
 
-/* ── Final Section / Video Link ── */
-.video-block {
-  border-top: 1px solid var(--dark-line);
-  margin-top: 80px;
+.exp-p4 {
+  width: clamp(320px, 28vw, 440px);
+  height: clamp(240px, 22vw, 320px);
+}
+
+.exp-p5 {
+  width: clamp(280px, 25vw, 360px);
+  height: clamp(350px, 33vw, 450px);
+}
+
+/* ── Section 10: Watch The Experience (Matching Image 1 Background & Visual Style) ── */
+.watch-experience-section {
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+
+.watch-experience-container {
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  text-align: left;
 }
 
-.video-block h3 {
-  font-size: clamp(38px, 5vw, 70px);
-  letter-spacing: -.05em;
-  margin: 12px 0;
+.watch-experience-title {
+  font-size: clamp(44px, 6vw, 84px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
   color: #ffffff;
+  margin: 0 0 16px;
+  text-align: left;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
 }
 
-.video-block p {
-  max-width: 500px;
-  color: #c8c5bc;
-}
-
-.video-link {
-  display: inline-block;
-  margin-top: 20px;
-  font-family: var(--mono);
-  font-size: 13px;
-  letter-spacing: .08em;
+.watch-experience-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(16px, 1.8vw, 22px);
   color: var(--hero-accent);
-  text-decoration: none;
-  border-bottom: 1.5px solid var(--hero-accent);
-  padding-bottom: 4px;
-  transition: opacity .2s;
+  margin: 0 0 36px 0;
+  max-width: 750px;
+  line-height: 1.45;
+  text-align: left;
+  opacity: 0.95;
 }
 
-.video-link:hover {
-  opacity: .8;
+.watch-experience-cta {
+  text-align: left;
+}
+
+.vimeo-btn-tech {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--hero-accent);
+  background: rgba(0, 229, 255, 0.05);
+  border: 1.5px solid var(--hero-accent);
+  border-radius: 6px;
+  padding: 14px 28px;
+  text-decoration: none;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.vimeo-btn-tech:hover {
+  background: var(--hero-accent);
+  color: #060912;
+  box-shadow: 0 0 35px rgba(0, 229, 255, 0.45);
+  transform: translateY(-2px);
 }
 
 /* ── Section 11: Reflection ── */
