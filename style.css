@@ -867,6 +867,11 @@ h2 {
 
 /* ── Section 04: Interactive Demo (Cyber Tech Design System) ── */
 .interactive {
+  position: relative;
+  overflow: hidden;
+}
+
+.interactive-container {
   display: grid;
   grid-template-columns: .85fr 1.15fr;
   gap: clamp(40px, 6vw, 90px);
@@ -1799,6 +1804,7 @@ h2 {
 
   .hero,
   .interactive,
+  .interactive-container,
   .failure,
   .reflection-grid,
   .feedback-layout,
