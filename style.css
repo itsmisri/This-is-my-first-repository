@@ -221,12 +221,15 @@ button {
 
 .hero-question {
   max-width: 520px;
-  font-size: clamp(16px, 1.6vw, 22px);
-  line-height: 1.35;
-  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(14px, 1.25vw, 17px);
+  line-height: 1.45;
+  margin: 4px 0 0;
   font-weight: 400;
-  color: rgba(232, 237, 245, 0.65);
+  color: var(--hero-accent);
   letter-spacing: .01em;
+  opacity: 0.9;
 }
 
 .hero-divider-line {
@@ -263,7 +266,7 @@ button {
   align-self: center;
   width: 100%;
   min-height: calc(100vh - 120px);
-  padding: 40px 0;
+  padding: 40px 0 40px clamp(20px, 3.5vw, 55px);
   overflow: visible;
 }
 
@@ -284,13 +287,14 @@ button {
 .artefact-3d-stage {
   position: relative;
   width: 100%;
-  height: clamp(320px, 42vh, 420px);
-  min-height: 320px;
+  height: clamp(380px, 50vh, 520px);
+  min-height: 380px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: transparent;
   user-select: none;
+  padding: 10px 0;
 }
 
 .hook-3d-canvas-container {
@@ -438,17 +442,18 @@ button {
 
 .hero-object figcaption {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 14.5px;
   font-weight: 700;
-  color: var(--hero-accent);
+  color: #00e5ff;
   letter-spacing: .06em;
-  margin-top: 16px;
+  margin-top: 14px;
   text-align: center;
-  text-transform: none;
+  text-transform: uppercase;
 }
 
 .hero-object figcaption span {
-  color: #ffffff;
+  color: inherit;
+  font-weight: inherit;
 }
 
 .dark-section {

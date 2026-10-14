@@ -23,8 +23,8 @@
   var height = container.clientHeight || 640;
 
   var camera = new THREE.PerspectiveCamera(36, width / height, 0.1, 100);
-  // Default camera angle: slightly elevated front-three-quarter view centered on the artefact
-  camera.position.set(2.0, 0.8, 3.5);
+  // Default camera angle: slightly elevated front-three-quarter view with generous clearance
+  camera.position.set(2.25, 0.9, 3.9);
 
   var renderer = new THREE.WebGLRenderer({
     alpha: true,
