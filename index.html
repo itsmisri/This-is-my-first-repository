@@ -242,12 +242,11 @@
       </div>
     </section>
 
-    <!-- 04 INTERACTION -->
-    <section class="interactive dark-section section-pad" id="interaction">
+    <!-- 04 INTERACTION (INTERACTIVE DEMO) -->
+    <section class="interactive dark-section tech-bg-section section-pad" id="interaction">
       <div class="interactive-intro reveal">
-        <h2>Trigger a distraction.</h2>
-        <p>The physical artefact listens for a notification sound while the phone is on the stand. Here, the interaction
-          is simplified for the web.</p>
+        <h2 class="interactive-title">Trigger a distraction.</h2>
+        <p class="interactive-sub">The physical artefact listens for a notification sound while the phone is on the stand. Here, the interaction is simplified for the web.</p>
       </div>
       <div class="hook-demo reveal" id="hookDemo">
         <div class="demo-phone" aria-live="polite">
@@ -262,11 +261,15 @@
           </div>
         </div>
         <div class="demo-stand">
-          <span class="demo-sensor" aria-hidden="true"></span>
+          <!-- Ultrasonic sensor graphic on stand -->
+          <div class="stand-sensor-module">
+            <div class="sensor-eye eye-left"></div>
+            <div class="sensor-eye eye-right"></div>
+          </div>
           <div class="demo-lights" aria-label="Artefact indicator lights">
             <i></i><i></i><i></i><i></i>
           </div>
-          <div class="demo-speaker" aria-hidden="true"></div>
+          <div class="demo-lip"></div>
         </div>
         <p class="demo-status" id="demoStatus">PHONE READY / WAITING</p>
         <button class="trigger-btn" id="triggerBtn" type="button">Trigger notification</button>

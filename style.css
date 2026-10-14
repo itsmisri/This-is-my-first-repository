@@ -865,184 +865,279 @@ h2 {
   opacity: 0.6;
 }
 
-/* ── Section 04: Interactive Demo ── */
+/* ── Section 04: Interactive Demo (Cyber Tech Design System) ── */
 .interactive {
   display: grid;
-  grid-template-columns: .8fr 1.2fr;
-  gap: 60px;
+  grid-template-columns: .85fr 1.15fr;
+  gap: clamp(40px, 6vw, 90px);
   align-items: center;
 }
 
-.interactive-intro h2 {
-  max-width: 600px;
+.interactive-intro {
+  text-align: left;
+}
+
+.interactive-title {
+  font-size: clamp(44px, 6vw, 84px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  color: #ffffff !important;
+  margin: 0 0 16px;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
+}
+
+.interactive-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(16px, 1.8vw, 22px);
+  color: var(--hero-accent);
+  margin: 0;
+  max-width: 560px;
+  line-height: 1.45;
+  opacity: 0.95;
 }
 
 .hook-demo {
-  min-height: 650px;
+  min-height: 600px;
   position: relative;
-  border: 1px solid var(--dark-line);
+  background: rgba(10, 14, 24, 0.85);
+  border: 1px solid rgba(0, 229, 255, 0.28);
+  border-radius: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #080808;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 0 50px rgba(0, 229, 255, 0.08), 0 24px 60px rgba(0, 0, 0, 0.7);
+  padding: 40px 20px;
+}
+
+/* Glass ambient glow behind the stand */
+.hook-demo::before {
+  content: '';
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(123, 47, 255, 0.16) 0%, rgba(0, 229, 255, 0.08) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .demo-phone {
-  width: 170px;
-  height: 320px;
-  border: 3px solid #ddd9ce;
-  border-radius: 24px;
+  width: 176px;
+  height: 326px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 26px;
   padding: 10px;
   position: relative;
-  background: #171717;
-  transform: translateY(30px);
+  background: #090d14;
+  transform: translateY(28px);
   z-index: 2;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 229, 255, 0.12);
+  transition: transform 0.4s ease;
 }
 
 .phone-speaker {
-  width: 42px;
-  height: 4px;
-  background: #aaa;
+  width: 38px;
+  height: 3.5px;
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 4px;
   margin: 0 auto 10px;
 }
 
 .phone-screen {
-  height: 285px;
-  border-radius: 15px;
-  background: linear-gradient(#272727, #111);
+  height: 288px;
+  border-radius: 17px;
+  background: linear-gradient(180deg, #101726 0%, #060910 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   position: relative;
-  padding: 18px 12px;
+  padding: 16px 12px;
   color: white;
+  overflow: hidden;
 }
 
 .phone-time {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .notification-dot {
   display: block;
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   background: var(--red);
   border-radius: 50%;
   position: absolute;
-  top: 22px;
-  right: 20px;
+  top: 18px;
+  right: 16px;
   opacity: 0;
+  box-shadow: 0 0 10px var(--red);
+  transition: opacity 0.3s;
 }
 
 .phone-notification {
   position: absolute;
-  left: 12px;
-  right: 12px;
-  top: 70px;
-  padding: 13px;
-  background: #eee;
-  color: #111;
-  border-radius: 10px;
-  transform: translateY(-15px);
+  left: 10px;
+  right: 10px;
+  top: 65px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #060912;
+  border-radius: 12px;
+  transform: translateY(-15px) scale(0.96);
   opacity: 0;
-  transition: .35s;
-}
-
-.phone-notification strong,
-.phone-notification span {
-  display: block;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .phone-notification strong {
+  display: block;
   font-size: 12px;
+  font-weight: 700;
+  color: #060912;
 }
 
 .phone-notification span {
-  font-size: 10px;
+  display: block;
+  font-size: 10.5px;
+  color: #444;
   margin-top: 3px;
 }
 
+/* Stand matching the actual 3D Hook shape & dark materials */
 .demo-stand {
-  width: 240px;
-  height: 205px;
+  width: 250px;
+  height: 195px;
   margin-top: -15px;
-  background: #202020;
-  clip-path: polygon(12% 0, 88% 0, 100% 100%, 0 100%);
+  background: linear-gradient(180deg, #1b2332 0%, #0d121c 100%);
+  clip-path: polygon(14% 0, 86% 0, 100% 100%, 0 100%);
   position: relative;
   z-index: 1;
-  border: 1px solid #444;
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+.demo-stand::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0.06) 0%, transparent 50%, rgba(0,0,0,0.3) 100%);
+  pointer-events: none;
+}
+
+/* LEDs array on stand top */
 .demo-lights {
   position: absolute;
-  top: 12px;
+  top: 14px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 7px;
+  gap: 9px;
+  z-index: 3;
 }
 
 .demo-lights i {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: #242424;
-  border: 1px solid #555;
+  background: #151a24;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s;
 }
 
-.demo-sensor {
+/* Ultrasonic sensor eyes module */
+.stand-sensor-module {
   position: absolute;
-  bottom: 28px;
+  top: 52px;
   left: 50%;
   transform: translateX(-50%);
-  width: 24px;
-  height: 8px;
-  background: #555;
-  border-radius: 2px;
+  display: flex;
+  gap: 12px;
+  padding: 6px 10px;
+  background: #090e18;
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  z-index: 3;
 }
 
-.demo-speaker {
-  position: absolute;
-  bottom: 55px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 44px;
-  height: 24px;
+.sensor-eye {
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  border: 2px solid #777;
+  background: radial-gradient(circle, #0b0f17 40%, #c4cbd8 45%, #e1e7f2 70%, #7e8796 100%);
+  border: 1.5px solid #2d3748;
+  box-shadow: inset 0 0 4px #000;
+}
+
+.demo-lip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: linear-gradient(180deg, #00e5ff 0%, #0099b8 100%);
+  opacity: 0.65;
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.5);
+  z-index: 2;
 }
 
 .demo-status {
   font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: .08em;
-  margin: 35px 0 18px;
-  color: #bbb;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  margin: 32px 0 20px;
+  color: var(--hero-accent);
+  text-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
+  z-index: 2;
 }
 
 .trigger-btn,
-.reset-btn,
-.video-link {
-  border: 1px solid var(--white);
-  background: transparent;
-  color: var(--white);
-  padding: 12px 18px;
+.reset-btn {
+  border: 1.5px solid var(--hero-accent);
+  background: rgba(0, 229, 255, 0.08);
+  color: var(--hero-accent);
+  padding: 13px 28px;
   text-transform: uppercase;
-  letter-spacing: .08em;
+  letter-spacing: .1em;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11.5px;
+  font-weight: 700;
   cursor: pointer;
-  text-decoration: none;
+  border-radius: 6px;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.18);
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.trigger-btn:hover,
+.reset-btn:hover {
+  background: var(--hero-accent);
+  color: #060912;
+  box-shadow: 0 0 35px rgba(0, 229, 255, 0.5);
+  transform: translateY(-2px);
 }
 
 .reset-btn {
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 .hook-demo.active .phone-notification {
   opacity: 1;
-  transform: none;
+  transform: translateY(0) scale(1);
 }
 
 .hook-demo.active .notification-dot {
@@ -1051,18 +1146,33 @@ h2 {
 
 .hook-demo.active .demo-lights i:nth-child(1),
 .hook-demo.active .demo-lights i:nth-child(4) {
-  background: var(--red);
-  box-shadow: 0 0 22px rgba(228, 55, 47, .65);
+  background: #ff3344;
+  border-color: #ff3344;
+  box-shadow: 0 0 20px #ff3344, 0 0 40px rgba(255, 51, 68, 0.6);
+  animation: ledFlashRed 0.4s infinite alternate;
 }
 
 .hook-demo.active .demo-lights i:nth-child(2),
 .hook-demo.active .demo-lights i:nth-child(3) {
-  background: var(--amber);
-  box-shadow: 0 0 22px rgba(242, 182, 50, .55);
+  background: #f2b632;
+  border-color: #f2b632;
+  box-shadow: 0 0 20px #f2b632, 0 0 40px rgba(242, 182, 50, 0.6);
+  animation: ledFlashAmber 0.4s infinite alternate 0.15s;
+}
+
+@keyframes ledFlashRed {
+  0% { opacity: 0.6; filter: brightness(0.9); }
+  100% { opacity: 1; filter: brightness(1.4); }
+}
+
+@keyframes ledFlashAmber {
+  0% { opacity: 0.6; filter: brightness(0.9); }
+  100% { opacity: 1; filter: brightness(1.4); }
 }
 
 .hook-demo.active .demo-stand {
   animation: hookPulse .55s 3;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 229, 255, 0.25);
 }
 
 .hook-demo.active .demo-phone {
@@ -1072,13 +1182,13 @@ h2 {
 @keyframes hookPulse {
   50% {
     transform: translateY(-3px);
-    filter: brightness(1.3);
+    filter: brightness(1.2);
   }
 }
 
 @keyframes phoneNudge {
   50% {
-    transform: translate(4px, 30px);
+    transform: translate(3px, 26px);
   }
 }
 
