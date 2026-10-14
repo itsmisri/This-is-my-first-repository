@@ -62,41 +62,160 @@ function resetNotification() {
 triggerBtn.addEventListener("click", triggerNotification);
 resetBtn.addEventListener("click", resetNotification);
 
-// Photographic Marquee Interactive Controls (Page 5: Making the thing)
-(function initMarquee() {
-  const outer = document.getElementById("makingMarqueeOuter");
-  const track = document.getElementById("makingMarqueeTrack");
-  const playBtn = document.getElementById("marqueeTogglePlay");
-  const playIcon = document.getElementById("marqueePlayIcon");
-  const playText = document.getElementById("marqueePlayText");
-  const prevBtn = document.getElementById("marqueeScrollLeft");
-  const nextBtn = document.getElementById("marqueeScrollRight");
+// Animated Sequence — "How Distraction Hook Works"
+(function initSequenceAnimation() {
+  const scene = document.getElementById("sequenceScene");
+  if (!scene) return;
 
-  if (!track || !outer) return;
+  const phone = document.getElementById("scenePhone");
+  const person = document.getElementById("scenePerson");
+  const leftArm = document.getElementById("personLeftArm");
+  const rightArm = document.getElementById("personRightArm");
+  const notif = document.getElementById("sPhoneNotif");
+  const buzzer = document.getElementById("buzzerWaves");
+  const caption = document.getElementById("sceneCaption");
+  const replayBtn = document.getElementById("replayBtn");
 
-  let isPaused = false;
+  const led1 = document.getElementById("hookLed1");
+  const led2 = document.getElementById("hookLed2");
+  const led3 = document.getElementById("hookLed3");
+  const led4 = document.getElementById("hookLed4");
+  const dots = scene.querySelectorAll(".step-dot");
 
-  function togglePlay() {
-    isPaused = !isPaused;
-    track.classList.toggle("is-paused", isPaused);
-    if (playIcon) playIcon.textContent = isPaused ? "▶" : "❚❚";
-    if (playText) playText.textContent = isPaused ? "Play" : "Pause";
+  const steps = [
+    {
+      caption: "A person approaches the desk with their phone",
+      action() {
+        person.className = "scene-person person-at-desk";
+      }
+    },
+    {
+      caption: "The phone is placed on the Distraction Hook stand",
+      action() {
+        phone.className = "scene-phone phone-on-stand";
+      }
+    },
+    {
+      caption: "Working begins — the phone stays on the stand",
+      action() {
+        leftArm.classList.add("arm-typing");
+        rightArm.classList.add("arm-typing");
+      }
+    },
+    {
+      caption: "A notification arrives on the phone",
+      action() {
+        notif.classList.add("notif-visible");
+      }
+    },
+    {
+      caption: "The Hook responds — lights flicker and buzzer sounds",
+      action() {
+        led1.classList.add("led-red");
+        led4.classList.add("led-red");
+        led2.classList.add("led-yellow");
+        led3.classList.add("led-yellow");
+        buzzer.classList.add("waves-active");
+      }
+    },
+    {
+      caption: "Attention shifts — the person notices the interruption",
+      action() {
+        person.className = "scene-person person-turning";
+        leftArm.classList.remove("arm-typing");
+        rightArm.classList.remove("arm-typing");
+      }
+    },
+    {
+      caption: "The person picks up the phone to check the notification",
+      action() {
+        person.className = "scene-person person-reaching";
+        leftArm.classList.add("arm-reaching");
+        phone.className = "scene-phone phone-picked-up";
+      }
+    },
+    {
+      caption: "The response stops — the experience is complete",
+      action() {
+        led1.className = "hook-led";
+        led2.className = "hook-led";
+        led3.className = "hook-led";
+        led4.className = "hook-led";
+        buzzer.classList.remove("waves-active");
+      }
+    }
+  ];
+
+  let currentStep = -1;
+  let animTimer = null;
+  let isRunning = false;
+
+  function resetScene() {
+    phone.className = "scene-phone";
+    person.className = "scene-person";
+    leftArm.className = "person-arm left-arm";
+    rightArm.className = "person-arm right-arm";
+    notif.classList.remove("notif-visible");
+    buzzer.classList.remove("waves-active");
+    led1.className = "hook-led";
+    led2.className = "hook-led";
+    led3.className = "hook-led";
+    led4.className = "hook-led";
+    dots.forEach(d => d.classList.remove("active"));
+    dots[0].classList.add("active");
+    caption.textContent = steps[0].caption;
+    currentStep = -1;
   }
 
-  if (playBtn) {
-    playBtn.addEventListener("click", togglePlay);
+  function advanceStep() {
+    currentStep++;
+    if (currentStep >= steps.length) {
+      isRunning = false;
+      return;
+    }
+
+    // Update dots
+    dots.forEach(d => d.classList.remove("active"));
+    dots[currentStep].classList.add("active");
+
+    // Update caption
+    caption.style.opacity = "0";
+    setTimeout(() => {
+      caption.textContent = steps[currentStep].caption;
+      caption.style.opacity = "1";
+    }, 200);
+
+    // Run action
+    steps[currentStep].action();
+
+    animTimer = setTimeout(advanceStep, 2200);
   }
 
-  // Smooth step buttons
-  if (prevBtn) {
-    prevBtn.addEventListener("click", () => {
-      outer.scrollBy({ left: -360, behavior: "smooth" });
+  function playSequence() {
+    if (isRunning) return;
+    isRunning = true;
+    resetScene();
+    animTimer = setTimeout(advanceStep, 600);
+  }
+
+  // Auto-play when in view
+  const seqObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !isRunning) {
+        playSequence();
+        seqObserver.unobserve(entry.target);
+      }
     });
-  }
+  }, { threshold: 0.3 });
 
-  if (nextBtn) {
-    nextBtn.addEventListener("click", () => {
-      outer.scrollBy({ left: 360, behavior: "smooth" });
+  seqObserver.observe(scene);
+
+  // Replay button
+  if (replayBtn) {
+    replayBtn.addEventListener("click", () => {
+      clearTimeout(animTimer);
+      isRunning = false;
+      playSequence();
     });
   }
 })();

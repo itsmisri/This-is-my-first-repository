@@ -95,10 +95,10 @@
             <div class="node-badge">01</div>
             <div class="node-content">
               <h3>Luddite Movement</h3>
-              <p>During The Industrial Revolution, Machines Entered Textile Production And Threatened Skilled Workers'
-                Jobs And Livelihoods. In Response, The Luddites Destroyed Machines As A Form Of Protest.</p>
-              <p class="card-takeaway">The Luddites Responded To The Technology Changing Their Work. I Respond To
-                Technology Changing My Attention.</p>
+              <p>During the industrial revolution, machines entered textile production and threatened skilled workers'
+                jobs and livelihoods. In response, the Luddites destroyed machines as a form of protest.</p>
+              <p class="card-takeaway">The Luddites responded to the technology changing their work. I respond to
+                technology changing my attention.</p>
             </div>
             <div class="node-connector line-01" aria-hidden="true"></div>
           </div>
@@ -108,8 +108,8 @@
             <div class="hub-core">
               <h3 class="hub-title">DISTRACTION HOOK</h3>
               <p class="hub-description">
-                Distraction Hook Explores The Moment When A Notification Pulls Our Attention Away From Work. Instead Of
-                Blocking The Distraction, It Makes The Moment Visible And Audible Through Light And Sound.
+                Distraction Hook explores the moment when a notification pulls our attention away from work. Instead of
+                blocking the distraction, it makes the moment visible and audible through light and sound.
               </p>
             </div>
           </div>
@@ -119,9 +119,9 @@
             <div class="node-badge">02</div>
             <div class="node-content">
               <h3>Critical Making</h3>
-              <p>Critical Making Connects Thinking With Making. It Uses The Process Of Making And Experimenting To
-                Understand Ideas, Technology And Their Impact.</p>
-              <p class="card-takeaway">I Understood The Idea Of Distraction By Making And Testing It.</p>
+              <p>Critical making connects thinking with making. It uses the process of making and experimenting to
+                understand ideas, technology and their impact.</p>
+              <p class="card-takeaway">I understood the idea of distraction by making and testing it.</p>
             </div>
             <div class="node-connector line-02" aria-hidden="true"></div>
           </div>
@@ -131,10 +131,10 @@
             <div class="node-badge">03</div>
             <div class="node-content">
               <h3>Protocol: Tactical Media</h3>
-              <p>Tactical Media Explores How Existing Technologies And Systems Can Be Used In Unexpected Ways. Instead
-                Of Rejecting Technology, It Looks At How We Can Work Within A System To Question It.</p>
-              <p class="card-takeaway">I Started Thinking About How The Same Technology That Distracts Me Could Become
-                Part Of The Experience.</p>
+              <p>Tactical media explores how existing technologies and systems can be used in unexpected ways. Instead
+                of rejecting technology, it looks at how we can work within a system to question it.</p>
+              <p class="card-takeaway">I started thinking about how the same technology that distracts me could become
+                part of the experience.</p>
             </div>
             <div class="node-connector line-03" aria-hidden="true"></div>
           </div>
@@ -496,62 +496,176 @@
           </div>
         </div>
 
-        <!-- Marquee Controls Toolbar -->
-        <div class="marquee-controls-bar">
-          <button type="button" class="marquee-btn" id="marqueeScrollLeft" aria-label="Scroll left">
-            <span>❮</span> Previous
-          </button>
-          <button type="button" class="marquee-btn" id="marqueeTogglePlay" aria-label="Pause or resume auto scroll">
-            <span id="marqueePlayIcon">❚❚</span> <span id="marqueePlayText">Pause</span>
-          </button>
-          <button type="button" class="marquee-btn" id="marqueeScrollRight" aria-label="Scroll right">
-            Next <span>❯</span>
-          </button>
-        </div>
       </div>
     </section>
 
-    <!-- 09 HOW IT WORKS -->
-    <section class="journey section-pad" id="journey">
+    <!-- 09 HOW IT WORKS — Animated Sequence -->
+    <section class="journey-anim section-pad" id="journey">
       <div class="section-heading reveal">
         <p class="section-number">08 / HOW DISTRACTION HOOK WORKS</p>
         <h2>One small sequence.</h2>
+        <p class="journey-anim-sub">Watch the experience unfold.</p>
       </div>
-      <div class="journey-track">
-        <div class="journey-item reveal"><span>01</span><b>APPROACH</b><small>Come to the artefact with your
-            phone.</small></div>
-        <div class="journey-item reveal"><span>02</span><b>PLACE PHONE</b><small>Phone sits on the stand.</small></div>
-        <div class="journey-item reveal"><span>03</span><b>START WORKING</b><small>Continue studying or working.</small>
+
+      <!-- Animated Scene Container -->
+      <div class="sequence-scene reveal" id="sequenceScene">
+        <div class="scene-stage" id="sceneStage">
+          <!-- Desk -->
+          <div class="scene-desk">
+            <div class="desk-surface"></div>
+          </div>
+
+          <!-- Laptop -->
+          <div class="scene-laptop">
+            <div class="laptop-screen">
+              <div class="laptop-screen-content">
+                <div class="screen-line"></div>
+                <div class="screen-line short"></div>
+                <div class="screen-line"></div>
+                <div class="screen-line short"></div>
+              </div>
+            </div>
+            <div class="laptop-base"></div>
+          </div>
+
+          <!-- Distraction Hook Stand -->
+          <div class="scene-hook-stand" id="sceneHookStand">
+            <div class="hook-body">
+              <div class="hook-lights-row">
+                <span class="hook-led" id="hookLed1"></span>
+                <span class="hook-led" id="hookLed2"></span>
+                <span class="hook-led" id="hookLed3"></span>
+                <span class="hook-led" id="hookLed4"></span>
+              </div>
+              <div class="hook-speaker-grille"></div>
+            </div>
+            <div class="hook-base-plate"></div>
+          </div>
+
+          <!-- Phone -->
+          <div class="scene-phone" id="scenePhone">
+            <div class="sphone-screen" id="sPhoneScreen">
+              <div class="sphone-notif" id="sPhoneNotif">
+                <strong>New message</strong>
+                <span>Hey, are you free?</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Person silhouette -->
+          <div class="scene-person" id="scenePerson">
+            <div class="person-head"></div>
+            <div class="person-body"></div>
+            <div class="person-arm left-arm" id="personLeftArm"></div>
+            <div class="person-arm right-arm" id="personRightArm"></div>
+          </div>
+
+          <!-- Buzzer indicator -->
+          <div class="buzzer-waves" id="buzzerWaves">
+            <span></span><span></span><span></span>
+          </div>
         </div>
-        <div class="journey-item signal-step reveal"><span>04</span><b>NOTIFICATION</b><small>A notification sound
-            arrives.</small></div>
-        <div class="journey-item signal-step reveal"><span>05</span><b>HOOK RESPONDS</b><small>Lights and buzzer
-            respond.</small></div>
-        <div class="journey-item reveal"><span>06</span><b>ATTENTION SHIFTS</b><small>The distraction becomes
-            noticeable.</small></div>
-        <div class="journey-item reveal"><span>07</span><b>CHECK PHONE</b><small>The notification is checked.</small>
+
+        <!-- Caption overlay -->
+        <div class="scene-caption" id="sceneCaption">Approach the desk</div>
+
+        <!-- Step indicator dots -->
+        <div class="scene-steps-indicator">
+          <span class="step-dot active" data-step="0"></span>
+          <span class="step-dot" data-step="1"></span>
+          <span class="step-dot" data-step="2"></span>
+          <span class="step-dot" data-step="3"></span>
+          <span class="step-dot" data-step="4"></span>
+          <span class="step-dot" data-step="5"></span>
+          <span class="step-dot" data-step="6"></span>
+          <span class="step-dot" data-step="7"></span>
         </div>
-        <div class="journey-item reveal"><span>08</span><b>RESPONSE STOPS</b><small>The experience ends.</small></div>
+      </div>
+
+      <!-- Replay Button -->
+      <div class="replay-wrap reveal">
+        <button type="button" class="replay-btn" id="replayBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+          Replay experience
+        </button>
       </div>
     </section>
 
-    <!-- 10 FINAL -->
-    <section id="final" class="final dark-section">
-      <div class="section-pad">
-        <div class="section-heading reveal">
-          <p class="section-number">09 / FINAL ARTEFACT</p>
-          <h2>From an idea I could barely explain to an object I could demonstrate.</h2>
+    <!-- 09 THE EXPERIENCE IN ACTION — Photographic Marquee -->
+    <section class="experience-action dark-section section-pad" id="final">
+      <div class="experience-action-header reveal">
+        <p class="section-number">09 / THE EXPERIENCE IN ACTION</p>
+        <h2 class="experience-action-title">The Experience in Action</h2>
+        <p class="experience-action-sub">People use Distraction Hook while working or studying, making the moment when a notification pulls their attention away more noticeable.</p>
+      </div>
+
+      <div class="experience-marquee-outer reveal" id="experienceMarqueeOuter">
+        <div class="experience-marquee-track" id="experienceMarqueeTrack">
+          <!-- SET 1 -->
+          <div class="experience-marquee-set">
+            <figure class="exp-photo exp-large">
+              <img src="assets/p27_img1.jpeg" alt="Person placing phone on the Distraction Hook stand" loading="lazy" />
+              <figcaption>Placing the phone on the stand</figcaption>
+            </figure>
+            <figure class="exp-photo exp-small">
+              <img src="assets/p28_img4.jpeg" alt="Close-up of LEDs and components on the artefact" loading="lazy" />
+              <figcaption>LED indicators and components</figcaption>
+            </figure>
+            <figure class="exp-photo exp-large">
+              <img src="assets/p28_img1.jpeg" alt="The Distraction Hook artefact glowing on a desk" loading="lazy" />
+              <figcaption>The artefact on the desk</figcaption>
+            </figure>
+            <figure class="exp-photo exp-medium">
+              <img src="assets/p28_img2.jpeg" alt="Hand holding the electronics assembly" loading="lazy" />
+              <figcaption>Physical construction details</figcaption>
+            </figure>
+            <figure class="exp-photo exp-small">
+              <img src="assets/p28_img3.jpeg" alt="Inside view of the electronics fitted in the 3D-printed body" loading="lazy" />
+              <figcaption>Electronics inside the enclosure</figcaption>
+            </figure>
+            <figure class="exp-photo exp-large">
+              <img src="assets/p27_img2.jpeg" alt="Person working at desk with phone on the stand" loading="lazy" />
+              <figcaption>Working with the phone on the stand</figcaption>
+            </figure>
+            <figure class="exp-photo exp-medium">
+              <img src="assets/p28_img5.jpeg" alt="Close-up of the breadboard wiring and sensor array" loading="lazy" />
+              <figcaption>Sensor array and wiring</figcaption>
+            </figure>
+            <figure class="exp-photo exp-small">
+              <img src="assets/p21_img1.jpeg" alt="Proximity sensor mounted on the front of the artefact" loading="lazy" />
+              <figcaption>Proximity sensor mount</figcaption>
+            </figure>
+          </div>
+          <!-- SET 2 (Clone for continuous loop) -->
+          <div class="experience-marquee-set" aria-hidden="true">
+            <figure class="exp-photo exp-large">
+              <img src="assets/p27_img1.jpeg" alt="" loading="lazy" />
+            </figure>
+            <figure class="exp-photo exp-small">
+              <img src="assets/p28_img4.jpeg" alt="" loading="lazy" />
+            </figure>
+            <figure class="exp-photo exp-large">
+              <img src="assets/p28_img1.jpeg" alt="" loading="lazy" />
+            </figure>
+            <figure class="exp-photo exp-medium">
+              <img src="assets/p28_img2.jpeg" alt="" loading="lazy" />
+            </figure>
+            <figure class="exp-photo exp-small">
+              <img src="assets/p28_img3.jpeg" alt="" loading="lazy" />
+            </figure>
+            <figure class="exp-photo exp-large">
+              <img src="assets/p27_img2.jpeg" alt="" loading="lazy" />
+            </figure>
+            <figure class="exp-photo exp-medium">
+              <img src="assets/p28_img5.jpeg" alt="" loading="lazy" />
+            </figure>
+            <figure class="exp-photo exp-small">
+              <img src="assets/p21_img1.jpeg" alt="" loading="lazy" />
+            </figure>
+          </div>
         </div>
       </div>
-      <div class="final-gallery">
-        <figure class="wide reveal"><img src="assets/p27_img1.jpeg"
-            alt="Final Distraction Hook artefact in presentation space"></figure>
-        <figure class="portrait reveal"><img src="assets/p28_img1.jpeg" alt="Final artefact outdoors"></figure>
-        <figure class="portrait reveal"><img src="assets/p28_img2.jpeg"
-            alt="Hand holding the final electronics assembly"></figure>
-        <figure class="portrait reveal"><img src="assets/p28_img4.jpeg" alt="Electronics inside the final object">
-        </figure>
-      </div>
+
       <div class="video-block section-pad reveal">
         <p class="mono-label">FINAL WORKING ARTEFACT</p>
         <h3>Watch the experience.</h3>
